@@ -33,6 +33,10 @@ gem 'geokit-rails3'
 gem 'newrelic_rpm'
 gem 'ey_config'
 
+group :development do
+  gem 'debugger'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -55,7 +55,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    columnize (0.3.6)
     crypt (1.1.4)
+    debugger (1.2.2)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.5)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.5)
     dictionary (1.0.0)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -152,6 +160,7 @@ DEPENDENCIES
   bartt-ssl_requirement
   coffee-rails (~> 3.2.1)
   crypt
+  debugger
   dictionary
   ey_config
   geokit-rails3

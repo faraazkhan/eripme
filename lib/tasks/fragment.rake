@@ -11,7 +11,8 @@ def value_of(data)
   end
 end
 
-TRANSACTION_CUTOFF_DATETIME = Time.parse('11/30/09').at_beginning_of_day
+#TRANSACTION_CUTOFF_DATETIME = Time.parse('11/30/09').at_beginning_of_day
+TRANSACTION_CUTOFF_DATETIME = Time.now
 
 task :fragment => :environment do
   customers = Customer.find(:all, :conditions => "status_id IN (4,7,5)", :order => 'id DESC', :limit => 10)

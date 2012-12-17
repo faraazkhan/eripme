@@ -35,3 +35,9 @@ Eripme::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+API_KEY_ICONTACT_ACCOUNT = "slK5VadopvE5zjc49rBpHaHJfgxlvBfN"
+SHARED_SECRET_ICONTACT_ACCOUNT = "NQJyQMM58h1yr4sqlTFSUds0kPbFggjT"
+LOGIN_ICONTACT_ACCOUNT = "morris@nationwidehomewarranty.com"
+PASSWORD_ICONTACT_ACCOUNT = "moandabe07"
+
