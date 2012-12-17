@@ -1,0 +1,29 @@
+<div class="fixed-width">
+  <div class="main-area">
+    <h2>Real Estate Professionals</h2>
+
+    <p>A home protection plan can be an effective marketing tool, instantly giving buyers additional confidence in their purchase.</p>
+
+    <p><ul>
+        <li>Homes with warranties return a sales price that averages 3% higher.<sup>1</sup></li>
+        <li>8 out of 10 buyers prefer to buy a home with a warranty.<sup>2</sup></li>
+        <li>Homes on the market with a warranty included sell on average 50% faster than homes without.<sup>3</sup></li>
+    </ul></p>
+
+    <p>As a Real Estate Professional, there is nothing better than a quick closing and the knowledge that the home that is sold is protected after the sale. A Real Estate Sales Broker or Agent can protect their clients and reputation by ensuring that every home they sell is protected by Select Home Warranty. 
+From the feedback that we have received, we have noticed that realtors and sellers have sold homes quicker and most times at a increased price as buyers feel more confident in buying homes that have a Home Warranty Coverage Plan.</p>
+
+    <ul class="footnotes">
+      <li><sup>1</sup> Business Week Magazine</li>
+      <li><sup>2</sup> Gallup Poll</li>
+      <li><sup>3</sup> National Home Warranty Association</li>
+    </ul>
+
+    <% content_for :request_intro do %>
+	<p class="notes">Please take a moment to request more information and join our realtor network:</p>
+    <% end %>
+	<%=render :partial => 'request_form', :locals => { :template_name => "Join Our Team"}%>
+
+  </div>
+</div>
+<%= google_analytics_js %>

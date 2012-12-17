@@ -1,0 +1,34 @@
+<div class="fixed-width">
+  <div class="main-area">
+	<h2>Contractor</h2>
+
+    <p>A relationship with Select Home Warranty can potentially help increase your customer base and cash flow while at the same time reduce your need for advertising.</p>
+
+    <p>Benefits of working with Select Home Warranty include:
+      <ul>
+        <li>Free leads. We'll send business to you. Our customer base is more than a million strong.</li>
+        <li>Free advertising. Select Home Warranty puts you face-to-face with potential new customers without any marketing expense or hassle on your part.</li>
+        <li>Steady business. Maintain a steady cash flow, no matter the season.</li>
+        <li>Customer feedback. Get a clear picture of how you're doing. Use your Select Home Warranty customer survey reports to improve customer satisfaction.</li>
+      </ul>
+    </p>
+
+    <% content_for :request_intro do %>
+	<p class="notes">Please take a moment to fill out this registration form and a Contractor Relations Representative will contact you shortly:</p>
+    <% end %>
+	<%=render :partial => 'request_form', :locals => { :template_name => "Become Contractor", :css_class => "contractors"}%>
+
+  </div>
+</div>
+
+
+<!--
+  </div>
+  <div id="layout_serviceguidelines" class="sidebar">
+	<p>Please take a moment to fill out this registration form and a Contractor Relations Representative will contact you shortly:</p>
+	<%=render :partial => 'request_form', :locals => { :template_name => "Become Contractor"}%>
+	<br/>
+	<p style="text-align: center;"><img src="<%= image_path 'site/stock/toolbag.jpg' %>" alt="tools" /></p>
+  </div>
+  -->
+<%= google_analytics_js %>

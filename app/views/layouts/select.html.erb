@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title><%= "#{$installation.name}#{@page_title ? ' - ' << @page_title : ''}" %></title>
+	<%= stylesheet_link_tag $installation.code_name %>
+    <!--[if lt IE 8]>
+        <%= stylesheet_link_tag "#{$installation.code_name}-ie6" %><![endif]-->
+	<%= javascript_include_tag 'mootools-1.2.3-core-yc', 'application' %>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	  jQuery.noConflict();
+	</script>
+    
+	<%= yield :head %>
+  </head>
+  <body>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', '<%= $installation.ga_tracking_id %>']);
+	  _gaq.push(['_trackPageview']);
+      
+	  (function() {
+	  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	  })();
+	</script>
+	
+    <div id="page">
+      <div id="header"><div class="fixed-width">
+          <div id="topbar">
+            <div class="login-menu"><div class="right-round">
+                <%= link_to "Customer Login", login_path %>
+                <span>|</span>
+                <%= link_to "Contractor Login", login_path %>
+            </div></div>
+          </div>
+          <a href="/" class="logo"><img src="<%= image_path 'logo.gif' %>" alt="Select Home Warranty" /></a>
+          <div class="phone">
+            <h3><%= $installation.phone %></h3>
+            <p>CALL NOW FOR A FREE QUOTE!</p>
+          </div>
+          <ul class="main-menu">
+            <% menu_items = [
+               ["Plans",:plans], ["Homeowners",:homeownercenter],
+               ["Buyers & Sellers",:buyingandselling], ["Real Estate Center",:realestate],
+               ["Contractors",:contractors], ["Get a Quote",:quote,"https"]
+               ]
+               menu_items.each_with_index do |item,i| %>
+            <li<% if i==0 %> class="first"<% elsif i+1 == menu_items.length %> class="last"<% end %>>
+              <% route =  {:action => item.second, :only_path=>false, :protocol=>(item[2] or 'http')} %>
+              <%= link_to item.first, route, :class => current_page?(route) ? "active" : "" %>
+            </li>
+            <% end %>
+          </ul>
+      </div></div>
+      
+      <div id="content"<% unless @content_class.nil? %> class="<%=@content_class%>"<% end %>>
+        <%# class="@without_padding"> %>
+        <%=yield%>
+      </div>
+
+      <div id="footer"><div class="fixed-width">
+          <ul>
+           <li><a href="/plans">Plans</a></li>
+            <li><a href="/homeownercenter">Homeowners</a></li>
+            <li><a href="/buyingandselling">Buyers &amp; Sellers</a></li>
+            <li><a href="/realestate">Real Estate Center</a></li>
+            <li><a href="/contractors">Contractors</a></li>
+            <li><a href="/termsconditions">Terms &amp; Conditions</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <!-- versus, termsconditions, about, privacy -->
+          </ul>
+      </div></div>
+    </div>
+	<%= google_analytics_js %>
+  </body>
+</html>
