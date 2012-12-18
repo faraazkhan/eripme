@@ -13,3 +13,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#SSL changes
+app/controllers/site_controller.rb
+config/database.yml
+script/rails
