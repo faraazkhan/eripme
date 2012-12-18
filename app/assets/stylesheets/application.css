@@ -9,5 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require empire
+ *= require cip
+ *= require new_admin
+ *= require admin
+ *= require select
+ *= require contract
+ *= require nhw-admin
+ *= require select-ie6
  */

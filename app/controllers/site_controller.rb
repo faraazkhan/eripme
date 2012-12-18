@@ -3,9 +3,8 @@ class SiteController < ApplicationController
   def installation_layout
     $installation.code_name
   end
-  unless Rails.env == 'development'
+
 #    ssl_required  :quote, :purchase
-  end
 
   before_filter :internal_page, :except => [:index, :plans, :quote, :purchase]
 

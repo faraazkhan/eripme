@@ -7,10 +7,10 @@ class Admin::AdminController < ApplicationController
   
   before_filter :check_login, :except => ['login', 'logout', 'authenticate']
   before_filter :select_tab
+  layout 'admin'
 
   ssl_exceptions []
-  
-  layout 'admin'
+
   
   def index
     redirect_to "/admin/#{current_account.role}_dashboard"

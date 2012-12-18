@@ -58,7 +58,7 @@
       
       <div id="content"<% unless @content_class.nil? %> class="<%=@content_class%>"<% end %>>
         <%# class="@without_padding"> %>
-        <%=yield%>
+        <%= yield %>
       </div>
 
       <div id="footer"><div class="fixed-width">

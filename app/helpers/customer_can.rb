@@ -25,11 +25,13 @@ module CustomerCan
 
   module ClassMethods
     def customer_can(*actions)
-      write_inheritable_attribute(:customer_can_actions, actions)
+      class_attribute :customer_can_actions
+      self.attribute_name = actions
     end
     
     def contractor_can(*actions)
-      write_inheritable_attribute(:contractor_can_actions, actions)
+      class_attribute :contractor_can_actions
+      self.attribute :actions
     end
   end
   

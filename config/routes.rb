@@ -9,6 +9,7 @@ Eripme::Application.routes.draw do
 
   namespace :admin do
     match 'customers/edit/:id.print' => 'customers#edit', :print => true
+    match 'authenticate' => 'admin#authenticate'
     match ':action' => 'admin#index'
     root :to => "admin#index"
   end

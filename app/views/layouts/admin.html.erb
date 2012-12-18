@@ -5,8 +5,8 @@
 	<head>
 		<title><%= "#{$installation.name} Administration#{@page_title ? ' - ' << @page_title : ''}" %></title>
 		<%= yield :gmap_script %>
-		<%= javascript_include_tag '/cip/cip.js', 'admin' %>
-		<%= stylesheet_link_tag '/cip/cip.js', 'admin'%>
+		<%= javascript_include_tag 'cip.js', 'admin' %>
+		<%= stylesheet_link_tag 'cip.css', 'admin'%>
 		
 		<script type="text/javascript">
 			CIApplication.baseParams = { authenticity_token: "<%=form_authenticity_token%>" };
