@@ -54,7 +54,7 @@ CIApplication.CustomerListColumns = [
 		renderer: function(email, customer) {
 			if (email && email != '') {
 				var link = new CIImageLink({
-					src: '/images/icons/mail_write.png',
+					src: 'icons/mail_write.png',
 					alt: 'Quickly Email',
 					Clicked: CIApplication.quicklyEmail
 				});
@@ -67,7 +67,7 @@ CIApplication.CustomerListColumns = [
 		property: 'standing', width: 30,
 		renderer: function(standing, customer) {
 			if (standing)
-				return '<img src="/images/icons/credit_cards/' + standing + '.png" ' +
+				return '<img src="icons/credit_cards/' + standing + '.png" ' +
 						'alt="' + standing.capitalize() + '"/>';
 			else
 				return '&nbsp;';
@@ -240,7 +240,7 @@ CIApplication.generateFaxesTable = function(options) {
 	var toolbar = [];
 	if (!options.cannotRetrieve) {
 		toolbar.push(new CIButton({
-			iconSrc: '/images/icons/action/download.png',
+			iconSrc: 'icons/action/download.png',
 			label: 'Retrieve',
 			get: '/admin/fax_sources/retrieve/' + options.key,
 			Clicked: function() {
@@ -286,7 +286,7 @@ CIApplication.generateFaxesTable = function(options) {
 								} // events
 							}), // CIElement
 							new CIImageButton({
-								src: '/images/icons/action/delete.png',
+								src: 'icons/action/delete.png',
 								alt: 'Permanently delete this fax',
 								cssClass: 'CIHudLink',
 								Clicked: function() {

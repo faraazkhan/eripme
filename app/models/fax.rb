@@ -1,6 +1,7 @@
 class Fax < ActiveRecord::Base
   belongs_to :source, :class_name => 'FaxSource'
   has_many :fax_assignable_joins, :dependent => :destroy
+  attr_accessible :path, :received_at, :sender_fax_number
   
   validates_presence_of :source_id
   validates_numericality_of :source_id

@@ -1,5 +1,6 @@
 class Renewal < ActiveRecord::Base
   belongs_to :customer
+  attr_accessible :starts_at, :ends_at, :amount, :years
   
   def edit_url
   end

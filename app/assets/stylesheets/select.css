@@ -48,7 +48,7 @@ LABEL {cursor: pointer;}
 }
 
 #header #topbar .login-menu {
-	background: #003663 url("../images/bg/topbar-button-left.gif") no-repeat left top;
+	background: #003663 url("bg/topbar-button-left.gif") no-repeat left top;
 	float: right;
 	line-height: 100%;
 	color: white;
@@ -60,7 +60,7 @@ LABEL {cursor: pointer;}
 #header #topbar .login-menu .right-round {
 	float: left;
 	padding: 10px 55px 11px;
-	background: url("../images/bg/topbar-button-right.gif") no-repeat right top;
+	background: url("bg/topbar-button-right.gif") no-repeat right top;
 }
 
 #header #topbar .login-menu A {
@@ -108,7 +108,7 @@ LABEL {cursor: pointer;}
 	margin: 0 0 15px;
 	list-style: none;
 	overflow: hidden;
-	background: url("../images/bg/main-menu.gif") repeat-x left top;
+	background: url("bg/main-menu.gif") repeat-x left top;
 }
 
 #header UL.main-menu LI {
@@ -131,29 +131,29 @@ LABEL {cursor: pointer;}
 
 #header UL.main-menu LI.first A {
 	width: 153px;
-	background: url("../images/bg/main-menu-left.gif") no-repeat left top;
+	background: url("bg/main-menu-left.gif") no-repeat left top;
 }
 
 #header UL.main-menu LI.last A {
 	border-right: none;
 	width: 153px;
-	background: url("../images/bg/main-menu-right.gif") no-repeat right top;
+	background: url("bg/main-menu-right.gif") no-repeat right top;
 }
 
 #header UL.main-menu LI A.active,
 #header UL.main-menu LI A:HOVER {
-    background: url("../images/bg/main-menu-hover.gif") repeat-x left top;
+    background: url("bg/main-menu-hover.gif") repeat-x left top;
 	text-decoration: none;
 }
 
 #header UL.main-menu LI.first A.active,
 #header UL.main-menu LI.first A:HOVER {
-	background: url("../images/bg/main-menu-left-hover.gif") no-repeat left top;
+	background: url("bg/main-menu-left-hover.gif") no-repeat left top;
 }
 
 #header UL.main-menu LI.last A.active,
 #header UL.main-menu LI.last A:HOVER {
-	background: url("../images/bg/main-menu-right-hover.gif") no-repeat right top;
+	background: url("bg/main-menu-right-hover.gif") no-repeat right top;
 }
 
 #content .billboard {
@@ -163,7 +163,7 @@ LABEL {cursor: pointer;}
 }
 
 #content .homepage {
-    background: #C7D7F0 url("../images/billboards/homepage.jpg") no-repeat left top;
+    background: #C7D7F0 url("billboards/homepage.jpg") no-repeat left top;
 }
 
 #content .billboard .info {
@@ -185,17 +185,17 @@ LABEL {cursor: pointer;}
 }
 
 #content .billboard .info .top {
-    background: url("../images/bg/info-top.png") no-repeat left top;
+    background: url("bg/info-top.png") no-repeat left top;
 }
 
 #content .billboard .info .info-content {
-    background: url("../images/bg/info-center.png") repeat-y left top;
+    background: url("bg/info-center.png") repeat-y left top;
     float: left;
     width: 100%;
 }
 
 #content .billboard .info .bottom {
-    background: url("../images/bg/info-bottom.png") no-repeat left top;
+    background: url("bg/info-bottom.png") no-repeat left top;
 }
 
 #content .billboard .info H1 {
@@ -233,7 +233,7 @@ LABEL {cursor: pointer;}
     float: right;
     display: inline;
     margin-right: 25px;
-    background: url("../images/bg/get-quote-btn.jpg") no-repeat left top;
+    background: url("bg/get-quote-btn.jpg") no-repeat left top;
     font-family: 'Myriad Pro', Arial, sans-serif;
     font-size: 17px;
     color: white;
@@ -524,7 +524,7 @@ LABEL {cursor: pointer;}
 #content .main-area .get-quote A {
 	width: 181px;
 	height: 44px;
-	background: url("../images/bg/get-quote-btn.png") no-repeat left top;
+	background: url("bg/get-quote-btn.png") no-repeat left top;
 	text-align: center;
 	float: left;
 }
@@ -553,7 +553,7 @@ LABEL {cursor: pointer;}
 }
 
 #content .sidebar .home-repair-steps {
-	background: url("../images/bg/steps.jpg") no-repeat left top;
+	background: url("bg/steps.jpg") no-repeat left top;
 	font-size: 12px;
 	width: 415px;
 	height: 400px;
@@ -571,25 +571,25 @@ LABEL {cursor: pointer;}
 }
 
 #content .sidebar .home-repair-steps .step-1 {
-    background-image: url("../images/icons/step-1.gif");
+    background-image: url("icons/step-1.gif");
     margin-left: 130px;
 }
 
 #content .sidebar .home-repair-steps .step-2 {
-    background-image: url("../images/icons/step-2.gif");
+    background-image: url("icons/step-2.gif");
     margin-right: 130px;
     margin-top: 30px;
 }
 
 #content .sidebar .home-repair-steps .step-3 {
-    background-image: url("../images/icons/step-3.gif");
+    background-image: url("icons/step-3.gif");
     margin-left: 130px;
     margin-top: 40px;
 }
 
 #content .sidebar .benefits {
     padding: 20px 0;
-    background: url("../images/bg/widget-gradient.jpg") repeat-x left top;
+    background: url("bg/widget-gradient.jpg") repeat-x left top;
     margin-top: 20px;
 
     border-radius: 5px;
@@ -688,7 +688,7 @@ LABEL {cursor: pointer;}
 
 #content .get-quote-tbl .submit {
     width: 181px;
-    background: url("../images/bg/get-quote-btn.png") no-repeat left top;
+    background: url("bg/get-quote-btn.png") no-repeat left top;
     border: none;
     padding: 10px 0;
     margin: 0;
@@ -709,11 +709,11 @@ LABEL {cursor: pointer;}
     margin: 10px 0;
     padding: 20px 0;
     border-top: 1px solid #F1F1F1;
-    background: url("../images/bg/get-more-info-form-1.jpg") no-repeat right center;
+    background: url("bg/get-more-info-form-1.jpg") no-repeat right center;
 }
 
 #content FORM.get-more-info.contractors {
-    background-image: url("../images/bg/get-more-info-form-2.jpg");
+    background-image: url("bg/get-more-info-form-2.jpg");
 }
 
 #content FORM.get-more-info .left-column,

@@ -1,5 +1,6 @@
 class Discount < ActiveRecord::Base
   has_many :customers
+  attr_accessible :is_monthly, :starts_at, :ends_at, :value, :name
   
   def code
     if self.is_monthly

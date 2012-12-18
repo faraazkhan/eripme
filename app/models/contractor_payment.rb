@@ -1,6 +1,7 @@
 class ContractorPayment < ActiveRecord::Base
   belongs_to  :contractor
   belongs_to  :repair
+  attr_accessible :amount, :paid_at
   
   def dollar_amount
     "$%.2f" % (self.amount || 0.0)

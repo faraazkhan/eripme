@@ -3,6 +3,7 @@ class Repair < ActiveRecord::Base
   belongs_to  :claim
   belongs_to  :contractor
   has_one     :payment, :class_name => 'ContractorPayment'
+  attr_accessible :authorization, :amount, :status, :service_charge
   
   def edit_url
     self.claim.edit_url

@@ -1,5 +1,6 @@
 class Note < ActiveRecord::Base
   belongs_to :customer
+  attr_accessible :note_text, :timestamp, :agent_name
   
   def date
     self.created_at || (Time.at(self.timestamp).utc if timestamp)

@@ -2,6 +2,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :customer
   #belongs_to :agent, :foreign_key => 'original_agent_id'
   has_one :agent, :through => :customer
+  attr_accessible :response_code, :response_reason_text, :auth_code, :amount, :subscription_paynum
   
   scope :of_customer, lambda { |id| { :conditions => ['customer_id = ?', id ] } }
   scope :for_agent, lambda { |agent|

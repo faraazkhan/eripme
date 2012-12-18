@@ -1,16 +1,16 @@
 #content .billboard .info .top {
     background: none;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./public/images/bg/info-top.png', sizingMethod='crop');
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg/info-top.png', sizingMethod='crop');
 }
 
 #content .billboard .info .info-content {
     background: none;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./public/images/bg/info-center.png', sizingMethod='scale');
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg/info-center.png', sizingMethod='scale');
 }
 
 #content .billboard .info .bottom {
     background: none;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./public/images/bg/info-bottom.png', sizingMethod='crop');
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg/info-bottom.png', sizingMethod='crop');
 }
 
 #header UL.main-menu {

@@ -160,14 +160,14 @@ div.searchField_left {
 	float: left;
 	width: 11px;
 	height: 24px;
-	background-image: url(/images/admin/searchfield_left.png);
+	background-image: url(admin/searchfield_left.png);
 	background-repeat: no-repeat;
 }
 div.searchField_lead {
 	height: 24px;
 	float: left;
 	font-weight: bold;
-	background-image: url(/images/admin/searchfield_mid.png);
+	background-image: url(admin/searchfield_mid.png);
 	background-repeat: repeat-x;
 }
 .searchMenuLabel {
@@ -184,7 +184,7 @@ div.searchField_mid input.searchField {
 	vertical-align: middle;
 	margin: 0;
 	height: 24px;
-	background: transparent url(/images/admin/searchfield_mid.png) repeat-x scroll 0 0;
+	background: transparent url(admin/searchfield_mid.png) repeat-x scroll 0 0;
 	border: medium none;
 }
 div.searchField_right {
@@ -192,7 +192,7 @@ div.searchField_right {
 	float: left;
 	width: 11px;
 	height: 24px;
-	background-image: url(/images/admin/searchfield_right.png);
+	background-image: url(admin/searchfield_right.png);
 	background-repeat: no-repeat;
 }
 div#advancedSearchDiv { display: none; }
@@ -299,7 +299,7 @@ img.inlineIcon {
 
 #contractorFinder {
 	width: 24px; height: 24px;
-	background-image: url(/images/admin/contractor_finder.png);
+	background-image: url(admin/contractor_finder.png);
 	float: left;
 	margin-left: 7px;
 	margin-top: 1px;

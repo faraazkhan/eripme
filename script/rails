@@ -8,31 +8,31 @@ require 'webrick/https'
 
 module Rails
     class Server < ::Rack::Server
-       LOCAL_CERT_PATH =  "/Users/faraaz/Developer/eripme/eripme.crt" #full path to local server.crt file
-       LOCAL_KEY_PATH = "/Users/faraaz/Developer/eripme/eripme.key" # full path to local host.key file
+       #LOCAL_CERT_PATH =  "/Users/faraaz/Developer/eripme/eripme.crt" #full path to local server.crt file
+       #LOCAL_KEY_PATH = "/Users/faraaz/Developer/eripme/eripme.key" # full path to local host.key file
 
-        def default_options
-            super.merge({
-                :Port => 3000,
-                :environment => (ENV['RAILS_ENV'] || "development").dup,
-                :daemonize => false,
-                :debugger => false,
-                :pid => File.expand_path("tmp/pids/server.pid"),
-                :config => File.expand_path("config.ru"),
-                :SSLEnable => true,
-                :SSLVerifyClient => OpenSSL::SSL::VERIFY_NONE,
-                :SSLPrivateKey => self.local_private_key,
-                :SSLCertificate => self.local_ssl_certificate,
-                :SSLCertName => [["CN", WEBrick::Utils::getservername]]
-            })
-        end
-        def local_private_key
-          OpenSSL::PKey::RSA.new(File.open(LOCAL_KEY_PATH).read) 
-        end
+        #def default_options
+            #super.merge({
+                #:Port => 3000,
+                #:environment => (ENV['RAILS_ENV'] || "development").dup,
+                #:daemonize => false,
+                #:debugger => false,
+                #:pid => File.expand_path("tmp/pids/server.pid"),
+                #:config => File.expand_path("config.ru"),
+                #:SSLEnable => true,
+                #:SSLVerifyClient => OpenSSL::SSL::VERIFY_NONE,
+                #:SSLPrivateKey => self.local_private_key,
+                #:SSLCertificate => self.local_ssl_certificate,
+                #:SSLCertName => [["CN", WEBrick::Utils::getservername]]
+            #})
+        #end
+        #def local_private_key
+          #OpenSSL::PKey::RSA.new(File.open(LOCAL_KEY_PATH).read) 
+        #end
 
-        def local_ssl_certificate
-          OpenSSL::X509::Certificate.new(File.open(LOCAL_CERT_PATH).read)
-        end
+        #def local_ssl_certificate
+          #OpenSSL::X509::Certificate.new(File.open(LOCAL_CERT_PATH).read)
+        #end
     end
 end 
 

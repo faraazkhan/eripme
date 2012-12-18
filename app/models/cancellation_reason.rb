@@ -1,5 +1,6 @@
 class CancellationReason < ActiveRecord::Base
   has_many :customers
+  attr_accessible :reason
   
   def edit_url
     '/admin/content'

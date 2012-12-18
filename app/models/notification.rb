@@ -1,6 +1,7 @@
 class Notification < ActiveRecord::Base
   belongs_to :actor, :polymorphic => true
   belongs_to :subject, :polymorphic => true
+  attr_accessible :message, :notification_type, :level, :subject_type, :subject_summary, :actor_type, :actor_summary
   
   CHANGED   = 'updated'
   UPDATED   = 'updated'

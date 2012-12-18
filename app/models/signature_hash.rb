@@ -1,6 +1,7 @@
 class SignatureHash < ActiveRecord::Base
   belongs_to :account
   attr_writer :signature
+  attr_accessible :signature_hash
   
   def edit_url
     self.account.parent.edit_url

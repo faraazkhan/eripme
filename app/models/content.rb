@@ -1,4 +1,5 @@
 class Content < ActiveRecord::Base
+  attr_accessible :slug, :html
   set_table_name 'content'
 
   def self.for(slug)

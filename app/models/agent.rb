@@ -1,4 +1,5 @@
 class Agent < ActiveRecord::Base
+  attr_accessible :name, :email, :admin, :commission_percentage
   has_one :account, :as => :parent, :dependent => :destroy
   has_many :transactions, :foreign_key => 'original_agent_id', :order => 'created_at DESC'
   has_many  :approved_transactions,

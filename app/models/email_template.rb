@@ -1,5 +1,6 @@
 class EmailTemplate < ActiveRecord::Base
   attr_accessor :data
+  attr_accessible :name, :subject, :body, :locked
   
   def edit_url
     "/admin/email_templates/edit/#{self.id}"

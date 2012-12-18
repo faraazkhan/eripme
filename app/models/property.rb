@@ -1,5 +1,6 @@
 class Property < ActiveRecord::Base
   belongs_to :customer
+  attr_accessible :address, :city, :state, :zip
   #has_one :address, :as => :addressable, :dependent => :destroy
   #validates_associated :address
   scope :of_customer, lambda { |id| {:conditions => ['customer_id = ?', id]} }

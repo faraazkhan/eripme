@@ -18,6 +18,7 @@ class Contractor < ActiveRecord::Base
     end
   end
   has_many :fax_assignable_joins, :as => :assignable
+  attr_accessible :first_name, :last_name, :company, :job_title, :phone, :mobile, :fax, :email, :priority, :notes, :receive_invoice_as, :rating, :flagged, :url
   
   # validations
   validates_presence_of           :company

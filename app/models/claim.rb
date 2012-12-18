@@ -5,6 +5,7 @@ class Claim < ActiveRecord::Base
   belongs_to  :property, :class_name => "Address", :foreign_key => 'address_id'
   
   scope :between_dates, lambda { |from, till| { :conditions => { :created_at => from .. till }, :order => "created_at DESC" } }
+  attr_accessible :claim_timestamp, :claim_text, :standard_coverage, :agent_name, :status_code
   
   def self.statuses_json
     i = -1

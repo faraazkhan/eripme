@@ -1,6 +1,7 @@
 class FaxSource < ActiveRecord::Base
   has_many :faxes
   validates_presence_of :key, :address, :number, :name
+  attr_accessible :name, :address, :number, :key, :password_hash
   
   def edit_url; ''; end
   

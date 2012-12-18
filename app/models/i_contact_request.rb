@@ -1,6 +1,7 @@
 class IContactRequest < ActiveRecord::Base
   LEFT_MESSAGE_LIST_ID = 226966
   FOLLOW_UP_LIST_ID = 226967
+  attr_accessible :path, :put
 
   @@api_tok = nil
   @@api_seq = nil

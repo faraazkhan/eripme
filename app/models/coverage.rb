@@ -1,6 +1,7 @@
 class Coverage < ActiveRecord::Base
   scope :all_optional, :conditions => ['optional = 1']
   scope :for_packages, { :conditions => ['optional = 0'], :order => 'coverage_name' }
+  attr_accessible :coverage_name
   
   has_and_belongs_to_many :packages
   

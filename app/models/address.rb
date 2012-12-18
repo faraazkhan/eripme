@@ -3,6 +3,7 @@ require 'rexml/document'
 
 class Address < ActiveRecord::Base
   acts_as_mappable :auto_geocode => false
+  attr_accessible :address, :address2, :address3, :city, :state, :zip_code, :country, :address_type, :lat, :lng, :verified_address, :geocoded_address
 
   # polymorphic relationship
   belongs_to                    :addressable,       :polymorphic => true

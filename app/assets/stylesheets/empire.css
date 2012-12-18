@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-image: url(/images/site/bg.png);
+	background-image: url(site/bg.png);
 	background-repeat: repeat-x repeat-y;
 	font-family: Tahoma;
 	font-size: 12px;
@@ -37,7 +37,7 @@ p {
 #layout_body {
 	width: 840px;
 	margin: 0 auto 0 auto;
-	background-image: url(/images/site/body_bg.png);
+	background-image: url(site/body_bg.png);
 	background-repeat: repeat-y;
 	padding: 20px 55px 20px 55px;
 }
@@ -48,21 +48,21 @@ p {
 	width: 900px;
 	height: 56px;
 	margin: 0 auto 0 auto;
-	background-image: url(/images/site/nav_bg_56.png);
+	background-image: url(site/nav_bg_56.png);
 	background-repeat: repeat-x;
 	text-align: center;
 }
 #layout_header {
 	width: 950px;
 	height: 175px;
-/*	background-image: url(/images/site/header.png); */
+/*	background-image: url(site/header.png); */
 	margin: 0 auto 0 auto;
 }
 #layout_footer {
 	width: 840px;
 	height: 100%;
 	margin: 0 auto 0 auto;
-	background-image: url(/images/site/body_bg.png);
+	background-image: url(site/body_bg.png);
 	background-repeat: repeat-y;
 	padding: 40px 55px 20px 55px;
 	text-align: center;
@@ -71,7 +71,7 @@ p {
 	width: 950px;
 	height: 34px;
 	margin: 0 auto 0 auto;
-	background-image: url(/images/site/cap_bg.png);
+	background-image: url(site/cap_bg.png);
 }
 /*** Form Tables ***/
 form > table > tbody td {
@@ -126,7 +126,7 @@ body.trident .plansTable {
 .plansTableColumn {
 	width: 90px;
 	float: left;
-	background-image: url(/images/site/long_gradient.png);
+	background-image: url(site/long_gradient.png);
 	background-repeat: no-repeat;
 	padding-left: 3px;
 	padding-right: 3px;
@@ -156,7 +156,7 @@ body.trident .plansTable {
 }
 /*** Arrows ***/
 .longArrow {
-	background-image: url(/images/site/arrows/long.png);
+	background-image: url(site/arrows/long.png);
 	width: 210px;
 	height: 29px;
 	color: white;
@@ -172,7 +172,7 @@ body.trident .plansTable {
 /*** Sidebar ***/
 .sidebar {
 	width: 258px;
-	background-image: url(/images/site/gradient.png);
+	background-image: url(site/gradient.png);
 	background-repeat: no-repeat;ь
 	margin-bottom: 25px;
 	vertical-align: top;
@@ -312,7 +312,7 @@ body.trident .plansTable {
 
 /*** Home ***/
 #home_image {
-	background-image: url(/images/site/home.jpg);
+	background-image: url(site/home.jpg);
 	width: 900px;
 	height: 378px;
 	position: relative;

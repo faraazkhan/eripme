@@ -91,7 +91,7 @@ table.CIForm { border: none; }
 /* CITabPanel */
 
 .CITabPanelTab {
-	background: url(/cip/images/widgets/CITab.png) repeat-x;
+	background: url(widgets/CITab.png) repeat-x;
 	color: #666;
 	text-align: center;
 	padding: 3px;
@@ -100,7 +100,7 @@ table.CIForm { border: none; }
 }
 .CITabPanelTab:hover {
 	color: #333;
-	background: url(/cip/images/widgets/CITab_over.png) repeat-x;
+	background: url(widgets/CITab_over.png) repeat-x;
 }
 
 /* CIPanelBase */
@@ -135,7 +135,7 @@ table.CIForm { border: none; }
 }
 .CITableHeaderRow { }
 .CITableHeaderColumn {
-	background: url(/cip/images/widgets/CITableHeaderColumn.png) repeat-x;
+	background: url(widgets/CITableHeaderColumn.png) repeat-x;
 	border-bottom: 1px solid #CCC;
 	text-align: left;
 	font-size: 0.9em;
@@ -231,7 +231,7 @@ body.gecko .CIMenu { }
 	border-bottom-right-radius: 3px;
 }
 .CISheetTitle {
-	background: url(/cip/images/widgets/CISheetTitle.png) repeat-x;
+	background: url(widgets/CISheetTitle.png) repeat-x;
 	font-size: 1.2em;
 	border-bottom: 1px solid #AAA;
 	padding: 10px;
@@ -244,7 +244,7 @@ body.gecko .CIMenu { }
 .CISheetButtonsContainer {
 	margin-top: 20;
 	text-align: right;
-	background: url(/cip/images/widgets/CISheetButtonsContainer.png) repeat-x;
+	background: url(widgets/CISheetButtonsContainer.png) repeat-x;
 	border-top: 1px solid white;
 	padding: 5px;
 	height: 20px;
@@ -277,7 +277,7 @@ body.gecko .CIMenu { }
 	position: fixed;
 	top: 0; left: 0;
 	display: none;
-	background-image: url(/cip/images/widgets/CIModalLayer.png);
+	background-image: url(widgets/CIModalLayer.png);
 	opacity: 0;
 	z-index: 200;
 }
@@ -307,7 +307,7 @@ body.gecko .CIMenu { }
 	display: block;
 	width: 100%;
 	border-bottom: 1px solid #AAA;
-	background: url(/cip/images/black_90.png);
+	background: url(black_90.png);
 	-webkit-border-top-left-radius: 5px;
 	-moz-border-radius-topleft: 5px;
 	border-top-left-radius: 5px;
@@ -324,7 +324,7 @@ body.gecko .CIMenu { }
 	margin-right: 3px;
 }
 .CIHudContentContainer {
-	background: url(/cip/images/widgets/CIHud.png);
+	background: url(widgets/CIHud.png);
 	-webkit-border-bottom-left-radius: 5px;
 	-moz-border-radius-bottomleft: 5px;
 	border-bottom-left-radius: 5px;
@@ -356,18 +356,18 @@ body.gecko .CIMenu { }
 	font-weight: bold !important;
 	color: white !important;
 }
-.CISelectedSkin_22 { background-image: url(/cip/images/selected/22.png) !important; }
-.CISelectedSkin_22_inverse { background-image: url(/cip/images/selected/22_inverse.png) !important; }
-.CISelectedSkin_25 { background-image: url(/cip/images/selected/25.png) !important; }
-.CISelectedSkin_25_inverse { background-image: url(/cip/images/selected/25_inverse.png) !important; }
-.CISelectedSkin_35 { background-image: url(/cip/images/selected/35.png) !important; }
-.CISelectedSkin_150 { background-image: url(/cip/images/selected/150.png) !important; }
+.CISelectedSkin_22 { background-image: url(selected/22.png) !important; }
+.CISelectedSkin_22_inverse { background-image: url(selected/22_inverse.png) !important; }
+.CISelectedSkin_25 { background-image: url(selected/25.png) !important; }
+.CISelectedSkin_25_inverse { background-image: url(selected/25_inverse.png) !important; }
+.CISelectedSkin_35 { background-image: url(selected/35.png) !important; }
+.CISelectedSkin_150 { background-image: url(selected/150.png) !important; }
 
 /* CIEditing */
-.CIEditingSkin_22 { background-image: url(/cip/images/editing/22.png) !important; }
-.CIEditingSkin_25 { background-image: url(/cip/images/editing/25.png) !important; }
-.CIEditingSkin_35 { background-image: url(/cip/images/editing/35.png) !important; }
-/*.CIEditingSkin_150 { background-image: url(/cip/images/editing/150.png) !important; }*/
+.CIEditingSkin_22 { background-image: url(editing/22.png) !important; }
+.CIEditingSkin_25 { background-image: url(editing/25.png) !important; }
+.CIEditingSkin_35 { background-image: url(editing/35.png) !important; }
+/*.CIEditingSkin_150 { background-image: url(editing/150.png) !important; }*/
 
 .CIkConnectedToElementBottom {
 	border-top: none;

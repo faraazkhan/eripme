@@ -10,6 +10,7 @@ class CreditCard < ActiveRecord::Base
   
   attr_accessor :cvc
   attr :number
+  attr_accessible :crypted_number, :last_4, :first_name, :last_name, :phone, :month, :year
   
   def exp_date=(string)
     to_year = Proc.new { |s| s.to_s.length == 2 ? s.to_i + 2000 : s.to_i }

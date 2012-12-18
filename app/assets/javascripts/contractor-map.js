@@ -7,9 +7,9 @@ var markerIconBase = new GIcon();
 markerIconBase.size = new GSize(64, 32);
 markerIconBase.iconAnchor = new GPoint(14, 32);
 markerIconBase.infoWindowAnchor = new GPoint(14, 0);
-var homeMarkerIcon = new GIcon(markerIconBase, "/images/icons/map/home.png");
-var knownMarkerIcon = new GIcon(markerIconBase, "/images/icons/map/known.png");
-var unknownMarkerIcon = new GIcon(markerIconBase, "/images/icons/map/unknown.png");
+var homeMarkerIcon = new GIcon(markerIconBase, "icons/map/home.png");
+var knownMarkerIcon = new GIcon(markerIconBase, "icons/map/known.png");
+var unknownMarkerIcon = new GIcon(markerIconBase, "icons/map/unknown.png");
 
 // Adapted from http://esa.ilmari.googlepages.com/circle.htm
 var drawCircleAtPoint = function(center) {
@@ -40,12 +40,12 @@ var contractorsTable = new CITable({
 	cssStyles: { CIFirmWidth: 250, CIFirmHeight: 270 },
 	columns: [
 		{ property: 'id', renderer: function(id, contractor) {
-			var img = new CIElement('img', { src: '/images/icons/' + (contractor.flagged ? 'red_flag_16' : 'none') + '.png', alt: 'Flagged' });
+			var img = new CIElement('img', { src: 'icons/' + (contractor.flagged ? 'red_flag_16' : 'none') + '.png', alt: 'Flagged' });
 			return new CIVPanel({
 				cssStyles: { CIFirmWidth: 16, CIFirmHeight: 32 },
 				content: [
 					new CIImageLink({
-						src: '/images/icons/action/edit.png',
+						src: 'icons/action/edit.png',
 						alt: 'Edit this Contractor',
 						Clicked: function() {
 							var object = {
