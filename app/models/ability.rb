@@ -3,7 +3,6 @@ class Ability
 
   def initialize(user)
     user ||= AdminUser.new
-    debugger
     case user.role
     when "admin"
       can :manage, :all
