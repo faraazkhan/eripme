@@ -32,6 +32,8 @@ gem 'bartt-ssl_requirement', :require => 'ssl_requirement'
 gem 'geokit-rails3'
 gem 'newrelic_rpm'
 gem 'ey_config'
+gem 'activeadmin'
+gem 'cancan'
 
 group :development do
   gem 'debugger'

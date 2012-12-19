@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217082545) do
+ActiveRecord::Schema.define(:version => 20121219012931) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email",                                       :null => false
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(:version => 20121217082545) do
 
   add_index "accounts", ["email"], :name => "accounts_email_idx"
   add_index "accounts", ["parent_id"], :name => "accounts_par_id_idx"
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -53,6 +68,25 @@ ActiveRecord::Schema.define(:version => 20121217082545) do
   add_index "addresses", ["addressable_type"], :name => "addresses_addressable_type_idx"
   add_index "addresses", ["zip_code"], :name => "addresses_zip_code_idx"
 
+  create_table "admin_users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "role"
+  end
+
+  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
+  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
   create_table "agents", :force => true do |t|
     t.string  "name",                  :default => "", :null => false
     t.string  "email",                 :default => "", :null => false
@@ -62,6 +96,26 @@ ActiveRecord::Schema.define(:version => 20121217082545) do
 
   add_index "agents", ["email"], :name => "agents_email_idx"
   add_index "agents", ["name"], :name => "agents_name_idx"
+
+  create_table "bdrb_job_queues", :force => true do |t|
+    t.binary   "args"
+    t.string   "worker_name"
+    t.string   "worker_method"
+    t.string   "job_key"
+    t.integer  "taken"
+    t.integer  "finished"
+    t.integer  "timeout"
+    t.integer  "priority"
+    t.datetime "submitted_at"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "archived_at"
+    t.string   "tag"
+    t.string   "submitter_info"
+    t.string   "runner_info"
+    t.string   "worker_key"
+    t.datetime "scheduled_at"
+  end
 
   create_table "cancellation_reasons", :force => true do |t|
     t.string   "reason",     :default => ""

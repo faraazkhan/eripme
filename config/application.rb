@@ -60,7 +60,7 @@ module Eripme
     config.assets.version = '1.0'
     #Setting TImezone for the app
     config.time_zone = 'Eastern Time (US & Canada)'
-    config.active_record.default_timezone = 'Eastern Time (US & Canada)'
+    config.active_record.default_timezone = :local
   end
 end
 require 'safe'

@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
 
   include ::SslRequirement
   include CustomerCan
+rescue_from CanCan::AccessDenied do |exception|
+  redirect_to admin_dashboard_path, :alert => exception.message
+end
+
+def current_ability
+  @current_ability ||= Ability.new(current_admin_user)
+end
 
   FOUR_OH_FOUR_EXCEPTIONS = [ActionController::UnknownAction, ActionController::RoutingError]
   IGNORABLE_EXCEPTIONS = [ActionController::InvalidAuthenticityToken, ActionController::RoutingError, Net::SMTPFatalError]

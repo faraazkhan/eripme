@@ -18,3 +18,4 @@
 app/controllers/site_controller.rb
 config/database.yml
 script/rails
+lib/tasks/load_data.rake
