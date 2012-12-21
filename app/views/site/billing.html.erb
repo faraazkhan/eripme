@@ -1,0 +1,74 @@
+<%= image_tag('wizard.png', :size => '920x46') %>
+
+<div class="fixed-width">
+  <div class="main-area">
+    <%= form_for :customer, :url => 'billing', :html => { :id => "getaquote_form", :style => 'color: black;' } do |customer_form| -%>
+      <% fields_for :billing_address do |billing_address| -%>
+
+        <h4>Billing Information</h4>
+        <table class="form_table">
+          <tr>
+            <td colspan="2">
+              <a href="#billing" onclick="copyBillingInfo();" style="color: #6A85C3;"></a>
+              <%= link_to "Billing Info. is same as Contact Info.", params.merge({:copy_billing_info=> true}) %>
+            </td>
+          <tr>
+            <td class="label" style="vertical-align: top; padding-top: 5px;">Credit Card:</td>
+            <td>
+              <input type="text" id="credit_card_number" style="width: 115px;" size="16" name="credit_card_number"/>
+              <%= image_tag('creditcards.gif', :alt => 'Credit Card', :title => 'We accept VISA, MasterCard, Discover Card and American Express') %>
+            </td>
+          </tr>
+          <tr>
+            <td class="label" style="">Exp. Date:</td>
+            <td style="vertical-align: top;">
+              <%= select_month(Date.today, :use_month_numbers => true) %>
+              <%= select_year(Date.today, :start_year => Date.today.year, :end_year => Date.today.year + 10)%>
+            </td>
+          </tr>
+          <tr>
+            <td class="label" style="">Billing Name:</td>
+            <td>
+              <%= customer_form.text_field :billing_first_name, :size => 12, :value => "#{@copy_address.present? ? @customer.try(:first_name) : ''}"  %>
+              <%= customer_form.text_field :billing_last_name, :size => 12, :value => "#{@copy_address.present? ? @customer.try(:last_name) : ''}" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">Address:</td>
+            <td><%= billing_address.text_field :address, :size => 26, :value => "#{@copy_address.present? ? @customer.try(:customer_address) : ''}"%></td>
+          </tr>
+          <tr>
+            <td class="label">City:</td>
+            <td><%= billing_address.text_field :city, :size => 26, :value => "#{@copy_address.present? ? @customer.try(:customer_city) : ''}" %></td>
+          </tr>
+          <tr>
+            <td class="label">State:</td>
+            <td>
+              <%= render :partial => 'states_select_tag', :locals => { :name => 'billing_address[state]', :id => "billing_address_state", :ny => true, :value => "#{@copy_address.present? ? @customer.try(:customer_state) : ''}"  } %>
+              &nbsp;&nbsp;&nbsp;Zip: <%= billing_address.text_field :zip_code, :size => 5, :value => "#{@copy_address.present? ? @customer.try(:customer_zip) : ''}" %>
+            </td>
+          </tr>
+        </table>
+	<% end; end -%>
+<div id="purchase_submit">
+	<label for="tc_checkbox"><strong>I agree to the <a href="/termsconditions" target="_blank">Terms &amp; Conditions</a> of the Home Warranty:</strong></label>
+	<input type="checkbox" id="tc_checkbox"/>
+  <br/><br/>
+	<input id="customer_id" type="hidden" name="id" value="<%=@customer.id%>">
+	<input type="hidden" name="property_id" value="<%=@property.id%>">
+	<!-- This is set by JS, so it incorporates the discount -->
+	<input type="hidden" id="customer_num_payments" name="customer[num_payments]" value="1">
+	<input type="hidden" id="customer_pay_amount" name="customer[pay_amount]" value=""/>
+	<input type="hidden" id="customer_disabled" name="customer[disabled]" value="0"/>
+	<input id="getaquote_button" type="button" onclick="validateGetAQuoteForm();" value="Start Coverage"/>
+</div>
+
+<script type="text/javascript">
+	gCoverages = new Hash({
+		<%=Coverage.find_all_by_optional(1).collect { |cvg| "#{cvg.id}: 0.0" }.join(', ') %>
+	});
+</script>
+
+</div>
+<%= google_analytics_js %>
+

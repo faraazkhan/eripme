@@ -93,45 +93,14 @@ class SiteController < ApplicationController
     @property = @customer.properties.build
   end
   alias :getaquote :quote
-  
-  def faq
-    @page_title = "Frequently Asked Questions"
-  end
-  alias :faqs :faq
-  
-  def testimonials
-    @page_title = "Testimonials"
-  end
-  
-  def please_call
-    @page_title = "Please Call Us"
-  end
-  
-  def purchase
-    @page_title = "Purchase A Plan"
-    if request.get?
-      params[:extra] ||= {}
-      @customer = params[:customer] ? Customer.create(params[:customer]) : Customer.new
-      @property = params[:property] ? @customer.properties.create(params[:property]) : @customer.properties.build
-      @note = params[:extra].collect { |label, value| "#{label.humanize.titleize}: #{value}" }.join(', ') if params[:extra]
-      redirect_to :action => 'please_call' if @customer.home_size_code == 1
-    elsif request.post?  
-      params[:coverages] ||= {}
-      params[:customer][:status_id] = 0
-      params[:customer][:ip] = request.remote_ip
-      params[:customer][:coverage_addon] = (params[:coverages].collect { |k,v| k }).join(', ')
-      params[:customer][:coverage_ends_at] = 1.year.from_now
-      
-      @customer = nil
-      # The user came from the mini-form and has a Customer object already
-      @customer = Customer.find(params[:id]) if params[:id].to_i > 0
-      # The user did not come from a mini-form and does not have a Customer object
-      @customer = Customer.create(params[:customer]) unless @customer
-      @customer.update_attributes(params[:customer])
-      @customer.notes.create({ :notes_text => @note }) if @note
-      
-      if params[:property_id].to_i == 0 then @customer.properties.create(params[:property]) end
-      # @customer.pay_amount is set by JS on the form, so it includes the discount
+
+  def billing
+      @customer = Customer.find(params[:customer_id])
+      @property = @customer.properties.build
+      if params[:copy_billing_info]
+          @copy_address = true
+      end
+      if request.post?
       params[:billing_address][:address_type] = 'Billing'
       billing_address = @customer.create_billing_address(params[:billing_address])
       
@@ -193,7 +162,53 @@ class SiteController < ApplicationController
       end
       
       render :action => 'thankyou'
-    end
+      end
+
+  end
+  
+  def faq
+    @page_title = "Frequently Asked Questions"
+  end
+  alias :faqs :faq
+  
+  def testimonials
+    @page_title = "Testimonials"
+  end
+  
+  def please_call
+    @page_title = "Please Call Us"
+  end
+  
+  def purchase
+    @page_title = "Purchase A Plan"
+    if request.get?
+      params[:extra] ||= {}
+      @customer = params[:customer] ? Customer.create(params[:customer]) : Customer.new
+      @property = params[:property] ? @customer.properties.create(params[:property]) : @customer.properties.build
+      @note = params[:extra].collect { |label, value| "#{label.humanize.titleize}: #{value}" }.join(', ') if params[:extra]
+      redirect_to :action => 'please_call' if @customer.home_size_code == 1
+    elsif request.post? 
+      params[:coverages] ||= {}
+      params[:customer][:status_id] = 0
+      params[:customer][:ip] = request.remote_ip
+      params[:customer][:coverage_addon] = (params[:coverages].collect { |k,v| k }).join(', ')
+      params[:customer][:coverage_ends_at] = 1.year.from_now
+      
+      @customer = nil
+      # The user came from the mini-form and has a Customer object already
+      @customer = Customer.find(params[:id]) if params[:id].to_i > 0
+      # The user did not come from a mini-form and does not have a Customer object
+      @customer = Customer.create(params[:customer]) unless @customer
+      @customer.update_attributes(params[:customer])
+      @customer.notes.create({ :notes_text => @note }) if @note
+      
+      if params[:property_id].to_i == 0 then @customer.properties.create(params[:property]) end
+      params[:customer_id] = @customer.id if @customer
+      params[:property] = @property if @property
+      params[:note] = @note if @note
+      redirect_to billing_path(params) 
+      # @customer.pay_amount is set by JS on the form, so it includes the discount
+      end
   end
 
   protected

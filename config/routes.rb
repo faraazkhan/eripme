@@ -5,6 +5,7 @@ Eripme::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   match 'login' => 'admin/admin#login', :as => :login
+  match 'billing' => 'site#billing', :as => :billing
 
   match 'contract/:id' => 'admin/customers#contract', :as => :contract_pdf, :format => 'pdf'
   match 'admin/customers/contract/:id' => 'admin/customers#contract', :format => 'pdf'

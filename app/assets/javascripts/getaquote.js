@@ -349,3 +349,7 @@ function validateGetAQuoteForm() {
 		return false;
 	}
 }
+
+$("#status li").removeClass("active").eq(i).addClass("active");
+
+
