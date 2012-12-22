@@ -1,11 +1,11 @@
 # TODO: Cleanup after rails3 upgrade script
 Eripme::Application.routes.draw do
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
 
   match 'login' => 'admin/admin#login', :as => :login
   match 'billing' => 'site#billing', :as => :billing
+  match 'purchase' => 'site#purchase', :as => :purchase
+  match 'admin/content/async_get_package_prices' => 'admin/content#async_get_package_prices', :via => [:get, :post]
+  match '/admin/discounts/async_validate' => 'admin/discounts#async_validate', :via => [:get, :post]
 
   match 'contract/:id' => 'admin/customers#contract', :as => :contract_pdf, :format => 'pdf'
   match 'admin/customers/contract/:id' => 'admin/customers#contract', :format => 'pdf'

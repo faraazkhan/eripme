@@ -2,7 +2,7 @@ class Admin::ContentController < ApplicationController
   before_filter :check_login, :except => [:async_get_package_prices]
   protect_from_forgery :except => [:async_load, :async_save, :async_get_package_prices]
 
-  ssl_exceptions []
+  #ssl_exceptions []
   
   def async_load
     render :json => Content.find_by_slug(params[:id])

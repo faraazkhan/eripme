@@ -5,12 +5,11 @@
 <div class="fixed-width">
   <%= image_tag('wizard.png', :size => '920x46') %>
   <div class="plan-table">
-    
     <%= form_for :customer, :url => 'purchase', :html => { :id => "getaquote_form", :style => 'color: black;' } do |customer_form| -%>
-      <%= render :partial => "plans_table", :locals => {:purchase => :purchase} %>
-    </div>
+    <%= render :partial => "plans_table", :locals => {:purchase => :purchase} %>
+  </div>
     <div class="sidebar-right">
-      <div>
+    <div>
 		<h4>Choose Optional Add-ons</h4>
 		<% coverages = Coverage.all_optional %>
 		<% bucket_size = (coverages.length.to_f / 2.0).ceil %>
@@ -58,11 +57,26 @@
 					</p>-->
 				</td>
 			</tr>
-					<tr>
+			<tr id="price_tr">
+				<td class="label">Price:</td>
+				<td id="price">$0.00</td>
+			</tr>
+			<tr id="savings_tr">
+				<td class="label">Savings:</td>
+				<td id="savings">$0.00</td>
+			</tr>
+			<tr id="yourPrice_tr">
+				<td class="red label">Your Price:</td>
+				<td class="red" id="priceYearly">$0.00</td>
+			</tr>
+			<tr>
 				<td class="label" style="width: 100px; vertical-align: top;">Discount Code:</td>
 				<td id="discount_td">
 					<input type="text" id="discount_code" size="8"/>
-					<input type="hidden" name="customer[discount_id]" id="discount_id" value=""/>
+          <input type="hidden" name="customer[discount_id]" id="discount_id" value=""/>
+          <% mapped = {'Single Family' => 'single', '2 Family' => 'duplex', '3 Family' => 'triplex', '4 Family' => 'fourplex', 'Condominium' => 'condo'} %> 
+          <% customer_home_type = mapped[params[:type_of_home]] %>
+          <input type="hidden" id="customer_home_type" value=<%="#{customer_home_type}"%> >
 					<br>
 					<input type="button" id="applyDiscount_button" value="Apply Discount" onclick="applyDiscount()"/>&nbsp;&nbsp;
 					<br/>
@@ -70,10 +84,19 @@
 				</td>
 			</tr>
     </table>
+    <div id="purchase_submit">
+	<input id="customer_id" type="hidden" name="id" value="<%=@customer.id%>">
+	<input type="hidden" name="property_id" value="<%=@property.id%>">
+	<!-- This is set by JS, so it incorporates the discount -->
+	<input type="hidden" id="customer_num_payments" name="customer[num_payments]" value="1">
+	<input type="hidden" id="customer_pay_amount" name="customer[pay_amount]" value=""/>
+	<input type="hidden" id="customer_disabled" name="customer[disabled]" value="0"/>
+	<input id="getaquote_button" type="button" onclick="validateGetAQuoteForm();" value="Start Coverage"/>
+</div>
+
     <td colspan="4">
       <div class="get-quote">
-        <%= customer_form.submit %>
-        <%= button_to 'Get a Free Quote Now', :controller => 'site', :action => 'purchase', :method => :post,  :input_html => {:class => 'get-quote-btn'} %>
+      <%= link_to "Get a Free Quote Now", purchase_path(params), :method=> :post %></td>
     </div>
 			</td>
 </div>

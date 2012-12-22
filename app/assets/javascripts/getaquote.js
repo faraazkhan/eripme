@@ -138,10 +138,8 @@ function updatePlanTotal() {
 				if ($('customer_coverage_type_'+id+'_label') == null) return;
 				price = price.toFloat()
 				var priceMonthly = (price/12.00).round(0);
-				$('customer_coverage_type_'+id+'_label').set(
-					'html',
-					'$'+price+'<br/>or<br/>$'+priceMonthly+'/month');
-			});
+				});
+
 			
 			var selectedPackage = null;
 			$$('input.packageRadioButton').each(function(radioButton) {
@@ -160,7 +158,7 @@ function updatePlanTotal() {
 			if (!selectedContractLength) return;
 			var isOneYear = selectedContractLength.get('value') == '1';
 			var contractLength = selectedContractLength.get('value').toInt();
-			var totalPrice = packagePrices[selectedPackage.get('value').toInt()];
+			var totalPrice = selectedPackage.get('value').toFloat();
 			
 			$$('input.coverageCheckbox').each(function(checkbox) {
 				if (checkbox.checked) totalPrice += checkbox.get('value').toFloat();
@@ -218,7 +216,7 @@ function updatePlanTotal() {
 			$('price').set('text', '$' + totalPrice.round(2));
 			$('priceYearly').set('text', '$' + (totalPrice - savings).round(2));
 			$('eachPayment_td').set('text', '$' + payAmount);
-			$('customer_num_payments').set('value', numPayments);
+			$('customer_num_payments').set('value', 100);
 			$('customer_pay_amount').set('value', payAmount);
 		}
 	}).post({'home_type':$('customer_home_type').get('value')});
@@ -350,6 +348,5 @@ function validateGetAQuoteForm() {
 	}
 }
 
-$("#status li").removeClass("active").eq(i).addClass("active");
 
 

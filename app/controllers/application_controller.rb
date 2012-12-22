@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  include ::SslRequirement
+  #include ::SslRequirement
   include CustomerCan
 rescue_from CanCan::AccessDenied do |exception|
   redirect_to admin_dashboard_path, :alert => exception.message

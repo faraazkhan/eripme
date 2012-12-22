@@ -9,7 +9,7 @@ class Admin::AdminController < ApplicationController
   before_filter :select_tab
   layout 'admin'
 
-  ssl_exceptions []
+  #ssl_exceptions []
 
   
   def index

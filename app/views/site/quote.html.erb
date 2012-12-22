@@ -55,15 +55,10 @@
       <tr>
         <td class="label">Cell Phone</td>
         <td class="field"><%=customer.text_field :mobile_phone, :size => 15, :tabindex => 6%></td>
+        <td class="label">Type of Home</td>
+        
+        <td> <%= select_tag(:type_of_home, options_for_select(Customer.home_occupancies.to_a.map(&:second))) %></td>
 			
-        <td class="label">Type of Home <b>*</b></td>
-        <td class="field">
-          <select name="customer[home_occupancy_code]" tabindex="11">
-            <% Customer.home_occupancies.each do |code, occupancy| %>
-              <option value="<%=code%>" <%='selected="selected"' if code == 0%>><%=occupancy%></option>
-            <% end %>
-          </select>
-        </td>
 			<td colspan="2">&nbsp;</td>
 		</tr><tr>
 			<td colspan="2">&nbsp;</td>
