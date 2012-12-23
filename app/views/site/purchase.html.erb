@@ -87,12 +87,22 @@
     <div id="purchase_submit">
 	<input id="customer_id" type="hidden" name="id" value="<%=@customer.id%>">
 	<input type="hidden" name="property_id" value="<%=@property.id%>">
-  <!-- This is set by JS, so it incorporates the discount -->
-  <%= customer_form.hidden_field :num_payments, {:value => 1} %>
-  <%= customer_form.hidden_field :pay_amount, {:value => 0} %>
-  <%= customer_form.hidden_field :id, {:value => @customer.id} %>
+	<!-- This is set by JS, so it incorporates the discount -->
+	<input type="hidden" id="customer_num_payments" name="customer[num_payments]" value="1">
+	<input type="hidden" id="customer_pay_amount" name="customer[pay_amount]" value=""/>
 	<input type="hidden" id="customer_disabled" name="customer[disabled]" value="0"/>
+	<input id="getaquote_button" type="button" onclick="validateGetAQuoteForm();" value="Start Coverage"/>
+</div>
+
+    <td colspan="4">
+      <div class="get-quote">
+      <%= link_to "Get a Free Quote Now", purchase_path(params), :method=> :post %></td>
+    </div>
+			</td>
 </div>
 
 <% end %>
 
+</div>
+</div>
+</div>

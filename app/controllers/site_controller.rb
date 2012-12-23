@@ -182,15 +182,6 @@ class SiteController < ApplicationController
   def purchase
     @page_title = "Purchase A Plan"
     if request.get?
-       mapped_home_type = {
-                'Single Family' => 'single',
-                '2 Family' => 'duplex',
-                '3 Family' => 'triplex',
-                '4 Family' => 'fourplex',
-                'Condominium' => 'condo'
-      }
-
-      params[:customer].merge!(:home_type => mapped_home_type[params[:type_of_home]]) if params[:customer]
       params[:extra] ||= {}
       @customer = params[:customer] ? Customer.create(params[:customer]) : Customer.new
       @property = params[:property] ? @customer.properties.create(params[:property]) : @customer.properties.build
