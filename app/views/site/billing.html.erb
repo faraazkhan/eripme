@@ -49,19 +49,15 @@
             </td>
           </tr>
         </table>
-	<% end; end -%>
 <div id="purchase_submit">
 	<label for="tc_checkbox"><strong>I agree to the <a href="/termsconditions" target="_blank">Terms &amp; Conditions</a> of the Home Warranty:</strong></label>
 	<input type="checkbox" id="tc_checkbox"/>
   <br/><br/>
-	<input id="customer_id" type="hidden" name="id" value="<%=@customer.id%>">
-	<input type="hidden" name="property_id" value="<%=@property.id%>">
-	<!-- This is set by JS, so it incorporates the discount -->
-	<input type="hidden" id="customer_num_payments" name="customer[num_payments]" value="1">
-	<input type="hidden" id="customer_pay_amount" name="customer[pay_amount]" value=""/>
-	<input type="hidden" id="customer_disabled" name="customer[disabled]" value="0"/>
-	<input id="getaquote_button" type="button" onclick="validateGetAQuoteForm();" value="Start Coverage"/>
+
+  <%= link_to "Get a Free Quote Now", billing_path(params), :method=> :post %></td>
 </div>
+
+	<% end; end -%>
 
 <script type="text/javascript">
 	gCoverages = new Hash({

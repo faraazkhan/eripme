@@ -216,7 +216,7 @@ function updatePlanTotal() {
 			$('price').set('text', '$' + totalPrice.round(2));
 			$('priceYearly').set('text', '$' + (totalPrice - savings).round(2));
 			$('eachPayment_td').set('text', '$' + payAmount);
-			$('customer_num_payments').set('value', 100);
+			$('customer_num_payments').set('value', numPayments);
 			$('customer_pay_amount').set('value', payAmount);
 		}
 	}).post({'home_type':$('customer_home_type').get('value')});
@@ -282,8 +282,6 @@ function validateGetAQuoteIntroForm() {
 	var messages = validatePresenceOf([
 		{id:'intro_customer_first_name', message: "A First Name is required."},
 		{id:'intro_customer_last_name', message: "A Last Name is required."},
-		{id:'intro_property_address', message: "An Address is required."},
-		{id:'intro_property_city', message: 'A City is required.'},
 		{id:'intro_customer_customer_phone', message: 'A Phone Number is required.'}
 	]);
 	validateMatches([

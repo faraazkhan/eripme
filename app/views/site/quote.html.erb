@@ -20,7 +20,7 @@
         <td class="label">First Name <b>*</b></td>
         <td class="field"><%=customer.text_field :first_name, :id => 'intro_customer_first_name', :size => 20, :tabindex => 1%></td>
         
-        <td class="label">Address <b>*</b></td>
+        <td class="label">Address</td>
         <td class="field"><%=property.text_field :address, :id => 'intro_property_address', :size => 20, :tabindex => 7 %></td>
       </tr>
       <tr>
@@ -34,7 +34,7 @@
         <td class="label">Email <b>*</b></td>
         <td class="field"><%=customer.text_field :email, :id => 'intro_customer_email', :size => 20, :tabindex => 3%></td>
         
-        <td class="label">City <b>*</b></td>
+        <td class="label">City </td>
         <td class="field"><%=property.text_field :city, :id => 'intro_property_city', :size => 15, :tabindex => 8%></td>
       </tr>
       <tr>
@@ -42,7 +42,7 @@
         <td class="field"><%=customer.text_field :customer_phone, :id => 'intro_customer_customer_phone', :size => 15, :tabindex => 4%></td>
 			
         <td class="label">State <b>*</b></td>
-        <td class="field"><%= render :partial => 'site/states_select_tag', :locals => { :name => 'property[state]', :tabindex => 9 } %></td>
+        <td class="field"><%= property.text_field :state, :id => 'intro_property_state', :size => 2, :tabindex => 9 %></td>
 			
       </tr>
       <tr>
