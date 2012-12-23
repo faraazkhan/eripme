@@ -91,14 +91,23 @@
 	<input type="hidden" id="customer_num_payments" name="customer[num_payments]" value="1">
 	<input type="hidden" id="customer_pay_amount" name="customer[pay_amount]" value=""/>
 	<input type="hidden" id="customer_disabled" name="customer[disabled]" value="0"/>
-	<input id="getaquote_button" type="button" onclick="validateGetAQuoteForm();" value="Start Coverage"/>
+	<input id="getaquote_button" type="hidden" onclick="validateGetAQuoteForm();" value="Start Coverage"/>
 </div>
 
     <td colspan="4">
       <div class="get-quote">
-      <%= link_to "Get a Free Quote Now", purchase_path(params), :method=> :post %></td>
-    </div>
-			</td>
+  <table>
+    <tr>
+      <td>
+        <%= customer_form.submit 'ENROLL NOW', :class => 'submit_button_class'  %>
+      </td>
+      <td>
+        <%= link_to "CALL ME", '/please_call', :class => 'submit_button_class' %></td>
+    </td>
+  </tr>
+ </table>
+</div>
+      </td>
 </div>
 
 <% end %>
