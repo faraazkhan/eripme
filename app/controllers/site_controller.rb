@@ -95,7 +95,8 @@ class SiteController < ApplicationController
   alias :getaquote :quote
 
   def billing
-      @customer = Customer.find(params[:customer_id])
+      id = params[:customer_id] || params[:id]
+      @customer = Customer.find(id) if id
       @property = @customer.properties.build
       if params[:copy_billing_info]
           @copy_address = true
