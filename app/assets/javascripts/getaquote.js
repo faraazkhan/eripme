@@ -282,8 +282,6 @@ function validateGetAQuoteIntroForm() {
 	var messages = validatePresenceOf([
 		{id:'intro_customer_first_name', message: "A First Name is required."},
 		{id:'intro_customer_last_name', message: "A Last Name is required."},
-		{id:'intro_property_address', message: "An Address is required."},
-		{id:'intro_property_city', message: 'A City is required.'},
 		{id:'intro_customer_customer_phone', message: 'A Phone Number is required.'}
 	]);
 	validateMatches([
@@ -311,8 +309,6 @@ function validateGetAQuoteForm() {
 		{id:'customer_customer_phone', message: 'A Phone Number is required.'},
 		{id:'customer_billing_first_name', message: "A First Name for Billing is required."},
 		{id:'customer_billing_last_name', message: "A Last Name for Billing is required."},
-		{id:'property_address', message: "The Property\'s Address is required."},
-		{id:'property_city', message: 'The Property\'s City is required.'},
 		{id:'billing_address_address', message: "An Address for Billing is required."},
 		{id:'billing_address_city', message: 'A City for Billing is required.'}
 	]);
