@@ -3,7 +3,13 @@
 <% end %>
 
 <div class="fixed-width">
-  <%= image_tag('wizard.png', :size => '920x46') %>
+  <div class="wizard-steps">
+    <ol>
+      <li><div class="left-corner" ><%= Content.for_navigation_step 1%></div></li>
+      <li><div class="center" id="active-step" ><%= Content.for_navigation_step 2%></div></li>
+      <li><div class="right-corner"><%= Content.for_navigation_step 3%></div></li>
+    </ol>
+</div>
   <div class="plan-table">
     <%= form_for :customer, :url => 'purchase', :html => { :id => "getaquote_form", :style => 'color: black;' } do |customer_form| -%>
     <%= render :partial => "plans_table", :locals => {:purchase => :purchase} %>
@@ -99,11 +105,8 @@
   <table>
     <tr>
       <td>
-        <%= customer_form.submit 'ENROLL NOW', :class => 'submit_button_class'  %>
+        <%= customer_form.submit 'Next Step', :class => 'submit_button_class'  %>
       </td>
-      <td>
-        <%= link_to "CALL ME", '/please_call', :class => 'submit_button_class' %></td>
-    </td>
   </tr>
  </table>
 </div>

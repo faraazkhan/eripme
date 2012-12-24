@@ -3,8 +3,13 @@
 <% end %>
 
 <div class="fixed-width">
-  <%= image_tag('wizard.png', :size => '920x46') %>
-  
+  <div class="wizard-steps">
+    <ol>
+      <li><div class="left-corner" id="active-step" ><%= Content.for_navigation_step 1%></div></li>
+      <li><div class="center"><%= Content.for_navigation_step 2%></div></li>
+      <li><div class="right-corner"><%= Content.for_navigation_step 3%></div></li>
+    </ol>
+</div>
   <div class="main-area">
     <p><strong>Please fill out the following form to receive your free quote.</strong></p>
     <p>Please note that <%= $installation.name %> maintains a high level of confidentiality and will not sell your information.</p>

@@ -1,6 +1,17 @@
-<%= image_tag('wizard.png', :size => '920x46') %>
+<!-- Google Code for Remarketing tag -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+
 
 <div class="fixed-width">
+  <div class="wizard-steps">
+    <ol>
+      <li><div class="left-corner" ><%= Content.for_navigation_step 1%></div></li>
+      <li><div class="center" ><%= Content.for_navigation_step 2%></div></li>
+      <li><div class="right-corner" id="active-step" ><%= Content.for_navigation_step 3%></div></li>
+    </ol>
+</div>
+
+
   <div class="main-area">
     <%= form_for :customer, :url => 'billing', :html => { :id => "getaquote_form", :style => 'color: black;' } do |customer_form| -%>
       <% fields_for :billing_address do |billing_address| -%>
@@ -59,7 +70,9 @@
 	<input type="hidden" id="customer_num_payments" name="customer[num_payments]" value="1">
 	<input type="hidden" id="customer_pay_amount" name="customer[pay_amount]" value=""/>
   <input type="hidden" id="customer_disabled" name="customer[disabled]" value="0"/>
+  <%= link_to "CALL ME", '/please_call', :class => 'submit_button_class' %></td>
   <%= customer_form.submit 'Start Coverage', :class => 'submit_button_class' %> 
+  
 </div>
 
 	<% end; end -%>
@@ -70,5 +83,21 @@
 </script>
 
 </div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1005147797;
+var google_conversion_label = "TKNyCKvuqwQQla2l3wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1005147797/?value=0&amp;label=TKNyCKvuqwQQla2l3wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
 <%= google_analytics_js %>
 

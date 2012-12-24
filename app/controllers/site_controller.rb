@@ -103,6 +103,7 @@ class SiteController < ApplicationController
       end
       if request.post?
       params[:billing_address][:address_type] = 'Billing'
+      @customer.update_attributes(params[:customer]) if params[:customer]
       billing_address = @customer.create_billing_address(params[:billing_address])
       
       gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new($installation[:authorize])
@@ -169,6 +170,7 @@ class SiteController < ApplicationController
   
   def faq
     @page_title = "Frequently Asked Questions"
+    @content = Content.for(:faq).html_safe
   end
   alias :faqs :faq
   
@@ -178,12 +180,21 @@ class SiteController < ApplicationController
   
   def please_call
     @page_title = "Please Call Us"
+    @content = Content.for(:please_call).html_safe
   end
   
   def purchase
     @page_title = "Purchase A Plan"
     if request.get?
       params[:extra] ||= {}
+      mapped = {
+                'Single Family' => 'single',
+                '2 Family' => 'duplex',
+                '3 Family' => 'triplex',
+                '4 Family' => 'fourplex',
+                'Condominium' => 'condo'
+      }
+      params[:customer].merge!(:home_type => mapped[params[:type_of_home]])
       @customer = params[:customer] ? Customer.create(params[:customer]) : Customer.new
       @property = params[:property] ? @customer.properties.create(params[:property]) : @customer.properties.build
       @note = params[:extra].collect { |label, value| "#{label.humanize.titleize}: #{value}" }.join(', ') if params[:extra]
@@ -207,7 +218,7 @@ class SiteController < ApplicationController
       params[:customer_id] = @customer.id if @customer
       params[:property] = @property if @property
       params[:note] = @note if @note
-      redirect_to billing_path(params) 
+      redirect_to "/billing?customer_id=#{@customer.id}&id=#{@customer.id}"
       # @customer.pay_amount is set by JS on the form, so it includes the discount
       end
   end
