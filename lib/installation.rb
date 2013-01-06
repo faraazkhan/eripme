@@ -10,7 +10,7 @@ class Installation
   alias :auto_delivers_email :auto_delivers_emails
   
   def [](key)
-    @credentials.has_key?(key) ? @credentials[key].symbolize_keys : nil
+     nil
   end
   
   def initialize(name, short_name, code_name, domain, www_domain, phone, fax, invoice_prefix, fax_service, auto_delivers_emails=true, ga_tracking_id='')

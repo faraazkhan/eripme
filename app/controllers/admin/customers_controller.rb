@@ -4,7 +4,6 @@ class Admin::CustomersController < ApplicationController
   before_filter :check_login, :except => [:esign, :contract]
   before_filter :assemble_search_string, :only => [:async_advanced_search_check, :advanced_search]
   
-  ssl_exceptions []
 
   customer_can :update, :claims, :edit, :claim_history, :contract, :esign
   
@@ -23,6 +22,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   def contract
+    debugger
     id_match            = params[:id].match(/(#{$installation.invoice_prefix})?0*(\d+)/i)
     @customer           = Customer.find(id_match[2])
     @contract_number    = @customer.dashed_contract_number.delete('#')

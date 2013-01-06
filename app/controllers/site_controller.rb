@@ -4,7 +4,7 @@ class SiteController < ApplicationController
     $installation.code_name
   end
 
-#    ssl_required  :quote, :purchase
+  #ssl_required  :quote, :purchase
 
   before_filter :internal_page, :except => [:index, :plans, :quote, :purchase]
 
@@ -22,18 +22,18 @@ class SiteController < ApplicationController
   
   
   def thanks
-    customer = Customer.create(params[:customer])
-    customer.notes.create({
+    @customer = Customer.create(params[:customer])
+    @customer.notes.create({
       :note_text => params[:extra].collect { |label, value| "#{label.humanize.titleize}: #{value}" }.join(', ')
-    })
-    customer.properties.create(params[:property])
-    Account.create({
-      :parent_id => customer.id,
-      :parent_type => 'Customer',
-      :email => customer.email,
-      :password => Account.generate_random_password,
-      :role => 'customer'
-    })
+    }) if params[:extra]
+    @customer.properties.create(params[:property])
+    #Account.create({
+      #:parent_id => @customer.id,
+      #:parent_type => 'Customer',
+      #:email => @customer.email,
+      #:password => Account.generate_random_password,
+      #:role => 'customer'
+    #})
     @page_title = "Thank you!"
   end
   
@@ -102,66 +102,68 @@ class SiteController < ApplicationController
           @copy_address = true
       end
       if request.post?
-      params[:billing_address][:address_type] = 'Billing'
-      @customer.update_attributes(params[:customer]) if params[:customer]
-      billing_address = @customer.create_billing_address(params[:billing_address])
+      #params[:billing_address][:address_type] = 'Billing'
+      #billing_address = @customer.create_billing_address(params[:billing_address])
+      #billing_attributes = { :billing_first_name => params[:customer][:billing_first_name],
+                             #:billing_last_name => params[:customer][:billing_last_name]
+      #}
+      #@customer.update_attributes(billing_attributes) if params[:customer]
+      #gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new($installation[:authorize])
+      #credit_card = ActiveMerchant::Billing::CreditCard.new(
+        #:first_name => @customer.first_name,
+        #:last_name => @customer.last_name,
+        #:number => params[:credit_card_number],
+        #:month => params[:date][:month],
+        #:year => params[:date][:year]
+      #)
+      #start_date = 1.week.from_now
+      #options = {
+        #:billing_address => {
+          #:first_name => @customer.billing_first_name,
+          #:last_name => @customer.billing_last_name,
+          #:address1 => billing_address.address,
+          #:city => billing_address.city,
+          #:state => billing_address.state,
+          #:zip => billing_address.zip_code,
+          #:country => "US"
+        #},
+        #:subscription_name => $installation.name,
+        #:interval => { :unit => :months, :length => 12 / @customer.num_payments },
+        #:duration => { :start_date => start_date.strftime('%Y-%m-%d'), :occurrences => @customer.num_payments }
+      #}
       
-      gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new($installation[:authorize])
-      credit_card = ActiveMerchant::Billing::CreditCard.new(
-        :first_name => @customer.first_name,
-        :last_name => @customer.last_name,
-        :number => params[:credit_card_number],
-        :month => params[:date][:month],
-        :year => params[:date][:year]
-      )
-      start_date = 1.week.from_now
-      options = {
-        :billing_address => {
-          :first_name => @customer.billing_first_name,
-          :last_name => @customer.billing_last_name,
-          :address1 => billing_address.address,
-          :city => billing_address.city,
-          :state => billing_address.state,
-          :zip => billing_address.zip_code,
-          :country => "US"
-        },
-        :subscription_name => $installation.name,
-        :interval => { :unit => :months, :length => 12 / @customer.num_payments },
-        :duration => { :start_date => start_date.strftime('%Y-%m-%d'), :occurrences => @customer.num_payments }
-      }
+      #response = gateway.recurring(@customer.pay_amount.to_f * 100.0, credit_card, options)
       
-      response = gateway.recurring(@customer.pay_amount.to_f * 100.0, credit_card, options)
-      
-      #<ActiveMerchant::Billing::Response:0x19c80b4 @test=false, @authorization="2966817", @message="Successful.", @success=true, @cvv_result={"message"=>nil, "code"=>nil}, @fraud_review=nil, @avs_result={"message"=>nil, "code"=>nil, "street_match"=>nil, "postal_match"=>nil}, @params={"code"=>"I00001", "text"=>"Successful.", "subscription_id"=>"2966817", "result_code"=>"Ok"}>
-      if response.success?
-        @customer.update_attributes({
-          :subscription_id => response.params['subscription_id'],
-          :credit_card_number => params[:credit_card_number],
-          :expirationDate => "#{params[:date][:year]}-#{params[:date][:month]}"
-        })
-        @customer.renewals.create({
-          :years => params[:contract_length].to_i,
-          :amount => @customer.pay_amount.to_f,
-          :starts_at => start_date,
-          :ends_at => start_date + params[:contract_length].to_i.years
-        })
-        password = Digest::SHA1.hexdigest("#{rand(1<<64)}")[0...5]
-        Account.create({
-          :parent_id => @customer.id,
-          :parent_type => 'Customer',
-          :email => @customer.email,
-          :password => password,
-          :role => 'customer',
-          :last_login_ip => request.remote_ip,
-          :last_login_at => Time.now
-        })
+      ##<ActiveMerchant::Billing::Response:0x19c80b4 @test=false, @authorization="2966817", @message="Successful.", @success=true, @cvv_result={"message"=>nil, "code"=>nil}, @fraud_review=nil, @avs_result={"message"=>nil, "code"=>nil, "street_match"=>nil, "postal_match"=>nil}, @params={"code"=>"I00001", "text"=>"Successful.", "subscription_id"=>"2966817", "result_code"=>"Ok"}>
+      #if response.success?
+        #@customer.update_attributes({
+          #:subscription_id => response.params['subscription_id'],
+          #:credit_card_number => params[:credit_card_number],
+          #:expirationDate => "#{params[:date][:year]}-#{params[:date][:month]}"
+        #})
+        #@customer.renewals.create({
+          #:years => params[:contract_length].to_i,
+          #:amount => @customer.pay_amount.to_f,
+          #:starts_at => start_date,
+          #:ends_at => start_date + params[:contract_length].to_i.years
+        #})
+        #password = Digest::SHA1.hexdigest("#{rand(1<<64)}")[0...5]
+        #Account.create({
+          #:parent_id => @customer.id,
+          #:parent_type => 'Customer',
+          #:email => @customer.email,
+          #:password => password,
+          #:role => 'customer',
+          #:last_login_ip => request.remote_ip,
+          #:last_login_at => Time.now
+        #})
         flash[:result] = :success
         Postoffice.template('Welcome', @customer.email, {:customer => @customer, :password => password}).deliver if $installation.auto_delivers_emails
         Postoffice.template('New Web Order', $installation.admin_email, {:customer => @customer}).deliver
-      else
-        Rails.logger.info "Payment error: #{response.inspect}"
-        flash[:result] = response
-      end
+      #else
+        #Rails.logger.info "Payment error: #{response.inspect}"
+        #flash[:result] = response
+      #end
       
       render :action => 'thankyou'
       end
@@ -170,7 +172,6 @@ class SiteController < ApplicationController
   
   def faq
     @page_title = "Frequently Asked Questions"
-    @content = Content.for(:faq).html_safe
   end
   alias :faqs :faq
   
@@ -180,7 +181,6 @@ class SiteController < ApplicationController
   
   def please_call
     @page_title = "Please Call Us"
-    @content = Content.for(:please_call).html_safe
   end
   
   def purchase

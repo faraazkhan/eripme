@@ -158,7 +158,7 @@ function updatePlanTotal() {
 			if (!selectedContractLength) return;
 			var isOneYear = selectedContractLength.get('value') == '1';
 			var contractLength = selectedContractLength.get('value').toInt();
-			var totalPrice = selectedPackage.get('value').toFloat();
+			var totalPrice = selectedPackage.get('data-price').toFloat();
 			
 			$$('input.coverageCheckbox').each(function(checkbox) {
 				if (checkbox.checked) totalPrice += checkbox.get('value').toFloat();
@@ -216,7 +216,7 @@ function updatePlanTotal() {
 			$('price').set('text', '$' + totalPrice.round(2));
 			$('priceYearly').set('text', '$' + (totalPrice - savings).round(2));
 			$('eachPayment_td').set('text', '$' + payAmount);
-			$('customer_num_payments').set('value', 100);
+			$('customer_num_payments').set('value', numPayments);
 			$('customer_pay_amount').set('value', payAmount);
 		}
 	}).post({'home_type':$('customer_home_type').get('value')});

@@ -1,4 +1,5 @@
 <% if flash[:result] == :success %>
+  <% debugger %>
 	<!-- Google Code for lead Conversion Page -->
 	<script type="text/javascript">
 	/* <![CDATA[ */
@@ -7,7 +8,7 @@
 		var google_conversion_format = "2";
 		var google_conversion_color = "ffffff";
 		var google_conversion_label = "5GJhCL-5jQIQ-b7Y3gM";
-		var google_conversion_value = 0;
+    var google_conversion_value = <% params[:customer][:pay_amount] || 0 %>;
 	/* ]]> */
 	</script>
 	<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js"></script>
