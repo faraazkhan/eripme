@@ -52,6 +52,8 @@ GEM
     activesupport (3.2.10)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    ancestry (1.2.5)
+      activerecord (>= 2.2.2)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -64,9 +66,21 @@ GEM
     bourbon (3.0.1)
       sass (>= 3.2.0)
       thor
+    browsercms (3.5.4)
+      ancestry (~> 1.2.4)
+      ckeditor_rails (~> 3.6.4)
+      jquery-rails (~> 2.0)
+      paperclip (~> 3.0.3)
+      rails (>= 3.2.5, < 3.3.0)
+      sass-rails
+      term-ansicolor
     builder (3.0.4)
     cancan (1.6.8)
     chronic (0.8.0)
+    ckeditor_rails (3.6.4.1)
+      railties (~> 3.0)
+      thor (~> 0.14)
+    cocaine (0.4.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -134,6 +148,12 @@ GEM
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
     packet (0.1.15)
+    paperclip (3.0.4)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     pdf-reader (1.2.0)
       Ascii85 (~> 1.0.0)
       hashery (~> 2.0)
@@ -182,6 +202,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    term-ansicolor (1.0.7)
     thor (0.16.0)
     tilt (1.3.3)
     tlsmail (0.0.1)
@@ -205,6 +226,7 @@ DEPENDENCIES
   activemerchant
   backgroundrb-rails3
   bartt-ssl_requirement
+  browsercms (= 3.5.4)
   cancan
   coffee-rails (~> 3.2.1)
   crypt

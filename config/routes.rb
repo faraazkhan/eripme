@@ -23,7 +23,8 @@ Eripme::Application.routes.draw do
   scope :constraints => { :protocol => 'https'} do
     match '/quote' => 'site#quote'
   end
-  match ':action' => 'site'
+  #match ':action' => 'site'
 
   root :to => 'site#index'
+  mount_browsercms
 end
