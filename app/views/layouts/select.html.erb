@@ -31,7 +31,9 @@
       <div id="header"><div class="fixed-width">
           <div id="topbar">
             <div class="login-menu"><div class="right-round">
-                <%= link_to "Login", '#'%>
+                <%= link_to "Customer Login", login_path %>
+                <span>|</span>
+                <%= link_to "Contractor Login", login_path %>
             </div></div>
           </div>
           <a href="/" class="logo"><img src="<%= image_path 'logo.gif' %>" alt="Select Home Warranty" /></a>
@@ -43,7 +45,7 @@
             <% menu_items = [
                ["Plans",:plans], ["Homeowners",:homeownercenter],
                ["Buyers & Sellers",:buyingandselling], ["Real Estate Center",:realestate],
-               ["Contractors",:contractors], ["Get a Quote",:quote,"http"]
+               ["Contractors",:contractors], ["Get a Quote",:quote,"https"]
                ]
                menu_items.each_with_index do |item,i| %>
             <li<% if i==0 %> class="first"<% elsif i+1 == menu_items.length %> class="last"<% end %>>
@@ -56,7 +58,7 @@
       
       <div id="content"<% unless @content_class.nil? %> class="<%=@content_class%>"<% end %>>
         <%# class="@without_padding"> %>
-        <%= yield %>
+        <%=yield%>
       </div>
 
       <div id="footer"><div class="fixed-width">
@@ -68,7 +70,6 @@
             <li><a href="/contractors">Contractors</a></li>
             <li><a href="/termsconditions">Terms &amp; Conditions</a></li>
             <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/faq">FAQ</a></li>
             <!-- versus, termsconditions, about, privacy -->
           </ul>
       </div></div>

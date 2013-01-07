@@ -2,15 +2,15 @@ require 'digest/sha1'
 
 class Admin::AdminController < ApplicationController
   
+  before_filter :set_selected_tab
   customer_can :login, :logout, :authenticate
   contractor_can :login, :logout, :authenticate
   
   before_filter :check_login, :except => ['login', 'logout', 'authenticate']
-  before_filter :select_tab
-  layout 'admin'
 
   ssl_exceptions []
-
+  
+  layout 'admin'
   
   def index
     redirect_to "/admin/#{current_account.role}_dashboard"
@@ -84,7 +84,9 @@ class Admin::AdminController < ApplicationController
     end
   end
   
-  def select_tab
+  protected
+  
+  def set_selected_tab
     @selected_tab = :dashboard
   end
 end

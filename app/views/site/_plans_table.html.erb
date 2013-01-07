@@ -32,7 +32,7 @@
     <% value = package.send(mapping[house_type]) %>
     <% label_text = "$#{value} or $#{(value/12).round(0)}/month"%>
     <td>
-      <input type="radio" class="packageRadioButton" id="customer_coverage_type_<%=package.id%>" data-price="<%= value%>" name="customer[coverage_type]" value="<%=package.id%>" onclick="updatePlanTotal()"<% if i==0 %> checked="checked"<% end %>/>
+      <input type="radio" class="packageRadioButton" id="customer_coverage_type_<%=package.id%>" name="customer[coverage_type]" data-price="<%=value%>" value="<%=package.id%>" onclick="updatePlanTotal()"<% if i==0 %> checked="checked"<% end %>/>
       <br/>
       <label for="customer_coverage_type_<%=package.id%>" id="customer_coverage_type_<%=package.id%>_label"> <%= label_text %></label>
     </td>

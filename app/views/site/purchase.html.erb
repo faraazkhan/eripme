@@ -5,11 +5,11 @@
 <div class="fixed-width">
   <div class="wizard-steps">
     <ol>
-      <li><div class="left-corner" ><%= Content.for_navigation_step 1%></div></li>
-      <li><div class="center" id="active-step" ><%= Content.for_navigation_step 2%></div></li>
-      <li><div class="right-corner"><%= Content.for_navigation_step 3%></div></li>
+      <li><div class="left-corner"><%= Content.for_navigation_step 1 %></div></li>
+      <li><div class="center" id="active-step"><%= Content.for_navigation_step 2 %></div></li>
+      <li><div class="right-corner"><%= Content.for_navigation_step 3 %></div></li>
     </ol>
-</div>
+  </div>
   <div class="plan-table">
     <%= form_for :customer, :url => 'purchase', :html => { :id => "getaquote_form", :style => 'color: black;' } do |customer_form| -%>
     <%= render :partial => "plans_table", :locals => {:purchase => :purchase} %>
@@ -118,3 +118,22 @@
 </div>
 </div>
 </div>
+<!-- Google Code for Lead Conversion Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1005147797;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "RaSNCLPxsgQQla2l3wM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1005147797/?value=0&amp;label=RaSNCLPxsgQQla2l3wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<%= google_analytics_js %>

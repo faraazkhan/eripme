@@ -3,7 +3,7 @@ class Admin::DiscountsController < ApplicationController
   layout 'new_admin', :except => [:async_validate]
   protect_from_forgery :except => :async_validate
 
-  #ssl_exceptions []
+  ssl_exceptions []
   
   def index
     @selected_tab = 'content'
