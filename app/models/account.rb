@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
   belongs_to :parent, :polymorphic => true
   has_one    :signature_hash
-  attr_accessible :email, :password, :role, :parent_id, :parent_type, :timezone
+  attr_accessible :email, :password, :role, :parent_id, :parent_type, :timezone, :last_login_ip, :last_login_at
   
   scope :for_contractor_id, lambda { |id|
     { :conditions => { :parent_type => 'Contractor', :parent_id => id }, :limit => 1 }

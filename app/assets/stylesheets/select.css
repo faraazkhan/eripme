@@ -943,25 +943,46 @@ LABEL {cursor: pointer;}
     cursor: pointer;
     text-decoration: none;
 }
+/* Navigation Wizard for Quote Workflow
+ * ------------------------------------*/
 
-#wiz-steps {
-    width: 314px;
+.wizard-steps OL {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+.wizard-steps OL LI {
     height: 28px;
-    margin: 10px;
+    margin: 1px;
     background-color: #A3A6AB;
     font-size: 12px;
     text-align: center;
+    vertical-align: middle;
     font-weight: normal;
     color: white;
-  }
+    float:left;
+    display:inline;
+}
 
-.left-step {
-      }
-  
-#wiz-steps .right-step {
-    float: right;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-.step {
+.wizard-steps .left-corner {
+  width: 315px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-top: 8px;
+}
+
+.wizard-steps .center {
+  width: 324px;
+  margin-top: 8px;
+}
+
+.wizard-steps .right-corner {
+  width: 270px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-top: 8px;
+}
+
+.wizard-steps #active-step {
+  color:#003663; 
 }

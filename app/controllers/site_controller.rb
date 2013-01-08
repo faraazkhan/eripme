@@ -3,8 +3,8 @@ class SiteController < ApplicationController
   def installation_layout
     $installation.code_name
   end
-#ENABLE SSL
-#  ssl_required  :quote, :purchase
+
+  #ssl_required  :quote, :purchase
 
   before_filter :internal_page, :except => [:index, :plans, :quote, :purchase]
 
@@ -233,3 +233,4 @@ def billing
     @content_class = "internal-page"
   end
 end
+

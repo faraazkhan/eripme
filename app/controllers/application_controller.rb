@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-#ENABLE SSL
-#  include ::SslRequirement
-  include CustomerCan
+
+  #include ::SslRequirement
 
   FOUR_OH_FOUR_EXCEPTIONS = [ActionController::UnknownAction, ActionController::RoutingError]
   IGNORABLE_EXCEPTIONS = [ActionController::InvalidAuthenticityToken, ActionController::RoutingError, Net::SMTPFatalError]
@@ -67,3 +66,4 @@ class ApplicationController < ActionController::Base
     end
   end
 end
+

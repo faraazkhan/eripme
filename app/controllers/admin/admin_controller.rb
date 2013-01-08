@@ -3,12 +3,10 @@ require 'digest/sha1'
 class Admin::AdminController < ApplicationController
   
   before_filter :set_selected_tab
-  customer_can :login, :logout, :authenticate
-  contractor_can :login, :logout, :authenticate
   
   before_filter :check_login, :except => ['login', 'logout', 'authenticate']
 
-  ssl_exceptions []
+  #ssl_exceptions []
   
   layout 'admin'
   
