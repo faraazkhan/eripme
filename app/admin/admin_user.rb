@@ -1,5 +1,4 @@
 ActiveAdmin.register AdminUser do     
-  menu :if => proc{ can?(:manage, AdminUser) }
   index do                            
     column :email                     
     column :current_sign_in_at        

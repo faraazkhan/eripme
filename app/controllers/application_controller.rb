@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   #include ::SslRequirement
+rescue_from CanCan::AccessDenied do |exception|
+  redirect_to admin_dashboard_path, :alert => exception.message
+end
 
   FOUR_OH_FOUR_EXCEPTIONS = [ActionController::UnknownAction, ActionController::RoutingError]
   IGNORABLE_EXCEPTIONS = [ActionController::InvalidAuthenticityToken, ActionController::RoutingError, Net::SMTPFatalError]
@@ -9,6 +12,11 @@ class ApplicationController < ActionController::Base
   def current_account
     session[:account_id].nil? ? Account.empty_account : Account.find(session[:account_id])
   end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_admin_user)
+  end
+  
   
   def with_timezone(time)
     #logger.debug("time = #{time}")

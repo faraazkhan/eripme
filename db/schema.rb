@@ -97,26 +97,6 @@ ActiveRecord::Schema.define(:version => 20121219012931) do
   add_index "agents", ["email"], :name => "agents_email_idx"
   add_index "agents", ["name"], :name => "agents_name_idx"
 
-  create_table "bdrb_job_queues", :force => true do |t|
-    t.binary   "args"
-    t.string   "worker_name"
-    t.string   "worker_method"
-    t.string   "job_key"
-    t.integer  "taken"
-    t.integer  "finished"
-    t.integer  "timeout"
-    t.integer  "priority"
-    t.datetime "submitted_at"
-    t.datetime "started_at"
-    t.datetime "finished_at"
-    t.datetime "archived_at"
-    t.string   "tag"
-    t.string   "submitter_info"
-    t.string   "runner_info"
-    t.string   "worker_key"
-    t.datetime "scheduled_at"
-  end
-
   create_table "cancellation_reasons", :force => true do |t|
     t.string   "reason",     :default => ""
     t.datetime "created_at"
