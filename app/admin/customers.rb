@@ -8,18 +8,21 @@ config.per_page = 100
 
 index do
   column "Contract #", :contract_number
-  column "Name", :name
+  column "Name", :full_name
   column "Email", :email
   column "Date", :created_at
   column("Send Email") { |c| "work in progress"}
-  column "Status", :status
+  column "Status", :status, :sortable => :status do |customer|
+    customer.status
+  end
   column("View") {|customer| link_to "View Customer", admin_customer_path(customer)}
 end
 
 form do |f|
   f.inputs "Details" do
     f.input :contract_number
-    f.input :name
+    f.input :first_name
+    f.input :last_name
     f.input :email
     f.input :status
     f.input :first_name

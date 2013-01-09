@@ -6,6 +6,9 @@ class Customer < ActiveRecord::Base
   belongs_to :discount
   belongs_to :agent
   belongs_to :cancellation_reason
+
+  before_save :set_name
+  before_save :set_status
   
   before_save :create_icontact_id
   after_save  :update_icontact_info
@@ -21,7 +24,7 @@ class Customer < ActiveRecord::Base
   
   has_one  :account, :as => :parent, :dependent => :destroy
   has_one  :billing_address, :class_name => 'Address', :as => :addressable, :dependent => :destroy, :conditions => { :address_type => 'Billing' }
-  attr_accessible :email, :first_name, :last_name, :customer_address, :customer_city, :customer_state, :customer_zip, :customer_phone, :customer_type, :coverage_type, :coverage_addon, :home_type, :pay_amount, :num_payments, :disabled, :coverage_end, :coverage_ends_at, :validated, :customer_comment, :credit_card_number_hash, :expirationDate, :timestamp, :billing_first_name, :billing_last_name, :billing_address, :billing_city, :billing_state, :billing_zip, :from, :service_fee_text_override, :service_fee_amt_override, :wait_period_text_override, :wait_period_days_override, :num_payments_override, :num_payments_override, :payment_schedule_override, :notes_override, :home_size_code, :home_occupancy_code, :work_phone, :mobile_phone, :discount_id, :status_id, :ip
+  attr_accessible :email, :first_name, :last_name, :customer_address, :customer_city, :customer_state, :customer_zip, :customer_phone, :customer_type, :coverage_type, :coverage_addon, :home_type, :pay_amount, :num_payments, :disabled, :coverage_end, :coverage_ends_at, :validated, :customer_comment, :credit_card_number_hash, :expirationDate, :timestamp, :billing_first_name, :billing_last_name, :billing_address, :billing_city, :billing_state, :billing_zip, :from, :service_fee_text_override, :service_fee_amt_override, :wait_period_text_override, :wait_period_days_override, :num_payments_override, :num_payments_override, :payment_schedule_override, :notes_override, :home_size_code, :home_occupancy_code, :work_phone, :mobile_phone, :discount_id, :status_id, :ip, :name
   
   scope :with_contract_number, lambda { |s|
     match = s.match(/#{$installation.invoice_prefix}(\d{1,})$/)
@@ -288,9 +291,13 @@ class Customer < ActiveRecord::Base
   def _dashed_contract_number
     self.dashed_contract_number.delete('#')
   end
+
+  def name 
+   self.full_name 
+  end
   
-  def name
-    "#{self.first_name} #{self.last_name}"
+  def set_name
+    self.full_name = "#{self.first_name} #{self.last_name}".humanize.titleize
   end
   alias to_s name
   
@@ -302,7 +309,7 @@ class Customer < ActiveRecord::Base
     self.created_at || (Time.at(self.timestamp).utc if timestamp)
   end
   
-  def status
+  def status_name
     case self.status_id
     when 0
       "New Customer"
@@ -322,6 +329,11 @@ class Customer < ActiveRecord::Base
       "To Be Billed"
     end
   end
+
+  def set_status
+    self.status = self.status_name
+  end
+
   
   def rate_mode
     case self.num_payments.to_i % (self.contract_term_years * 12)
