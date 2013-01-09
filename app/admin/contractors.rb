@@ -6,7 +6,7 @@ ActiveAdmin.register Contractor do
     column "Company" , :company
     column "Email", :email
     column "Phone", :phone
-    column "Rating", :rating
+    column('Rating', :stars,  :sortable => :rating)
     default_actions
   end
 
