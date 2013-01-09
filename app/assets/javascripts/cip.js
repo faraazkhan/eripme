@@ -5484,7 +5484,7 @@ var CIMenu = new Class({
 			html: 'Close&nbsp;'
 		}));
 		var closeButton = new Element('img', {
-			src: '/cip/images/close.png',
+			src: '/assets/cip/images/close.png',
 			alt: 'Close Menu'
 		});
 		closeContainer.adopt(closeButton);
@@ -6227,7 +6227,7 @@ var CIHud = new Class({
 		titleContainerRow.adopt(new Element('td', { styles:{width:'100%'} }).adopt(title));
 		if (!this.hideCloseButton) {
 			var closeButton = new Element('img', {
-				src: '/cip/images/close_white.png',
+				src: '/assets/cip/images/close_white.png',
 				alt: 'Close HUD',
 				'class': 'CIHudTitleCloseButton'
 			});
@@ -6782,9 +6782,9 @@ CISheet.TitleStyle = CITitle.NakedStyle.override({});
 CIButton.Style = new CIStyle({
 	height: 18,
 	capWidth: 10,
-	capsImage: '/cip/images/widgets/CIButton_caps.png',
-	middleImage: '/cip/images/widgets/CIButton_mid.png',
-	middleActiveImage: '/cip/images/widgets/CIButton_mid_active.png',
+	capsImage: '/assets/cip/images/widgets/CIButton_caps.png',
+	middleImage: '/assets/cip/images/widgets/CIButton_mid.png',
+	middleActiveImage: '/assets/cip/images/widgets/CIButton_mid_active.png',
 	textColor: CIStyle.TextColor
 });
 CIButton.PageStyle = new CIStyle({
@@ -6802,7 +6802,7 @@ CIToolbar.Style = new CIStyle({
 });
 
 CIIndicator.Style = new CIStyle({
-	image: '/cip/images/widgets/CIIndicator.gif',
+	image: '/assets/cip/images/widgets/CIIndicator.gif',
 	width: 20, height: 16,
 });window.addEvent('domready', function /*main*/ () {
 	CIObject.implement(Chain);

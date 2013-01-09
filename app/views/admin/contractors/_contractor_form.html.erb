@@ -56,9 +56,24 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="label"><img src="/images/icons/red_flag_16.png" src="Flagged" />&nbsp;</td>
-		<td><%= f.check_box :flagged %>&nbsp; This contractor is flagged for warning</td>
+		<td class="label"><img src="/assets/icons/red_flag_16.png" src="Flagged" />&nbsp;</td>
+    <td><%= f.check_box :flagged %>&nbsp; This contractor is flagged for warning</td>
+  </tr>
+  <tr>
+    <td/><td>
+    <% if @contractor.has_web_access? %>
+      This contractor has web access
+  </td>
+</tr>
+<tr> <td/>
+  <td>
+    <%= f.check_box :reset_password %> Reset Password for this contractor
+  </td>
+<%else %>
+  <%= f.check_box :grant_web_access %> Grant Web Access to this Contractor
+<% end %>
+</tr>
 	<tr>
-		<td class="label">&nbsp;</td><td><%= submit_tag submit_label %></td>
-	</tr>
+    <td class="label">&nbsp;</td><td><%= submit_tag submit_label %></td>
+  </tr>
 </table>

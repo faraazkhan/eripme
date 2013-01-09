@@ -119,6 +119,9 @@ class Admin::ContractorsController < ApplicationController
   
   def update
     @contractor = Contractor.find(params[:id])
+    if params[:reset_password] == 1
+      @contractor.reset_password
+    end
     no_email_before = @contractor.email.empty?
     @address = @contractor.address || @contractor.build_address
     if @contractor.update_attributes(params[:contractor]) && @address.update_attributes(params[:address])

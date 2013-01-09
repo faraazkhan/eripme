@@ -19,6 +19,7 @@ class Contractor < ActiveRecord::Base
   end
   has_many :fax_assignable_joins, :as => :assignable
   attr_accessible :first_name, :last_name, :company, :job_title, :phone, :mobile, :fax, :email, :priority, :notes, :receive_invoice_as, :rating, :flagged, :url
+  attr_accessor :grant_web_access, :reset_password
   
   # validations
   validates_presence_of           :company
@@ -134,6 +135,14 @@ class Contractor < ActiveRecord::Base
       end
     end
   end
+
+   def has_web_access?
+    return false unless Account.for_contractor_id(self.id)
+  end
+
+   def reset_password
+     self.account.reset_password if self.account
+   end
   
   protected
   
@@ -146,4 +155,7 @@ class Contractor < ActiveRecord::Base
   def format_did(did)
     "(" + did[0 .. 2].to_s + ") " + did[3 .. 5].to_s + "-" + did[6 .. 9].to_s
   end
+
+ 
+  
 end
