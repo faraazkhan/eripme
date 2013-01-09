@@ -118,9 +118,13 @@ class Admin::ContractorsController < ApplicationController
   end
   
   def update
+    debugger
     @contractor = Contractor.find(params[:id])
-    if params[:reset_password] == 1
+    if params[:contractor][:reset_password] == 1
       @contractor.reset_password
+    end
+    if params[:contractor][:grant_web_access] == 1
+      @contractor.grant_account_and_send_welcome_email
     end
     no_email_before = @contractor.email.empty?
     @address = @contractor.address || @contractor.build_address

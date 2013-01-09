@@ -10,26 +10,29 @@ ActiveAdmin.register Contractor do
     default_actions
   end
 
-  #form do |f|
-    #@ratings = %w[ * ** *** **** *****]
-    #f.inputs "Details" do
-      #f.input :first_name
-      #f.input :last_name
-      #f.input :company
-      #f.input :job_title
-      #f.input :email
-      #f.input :phone
-      #f.input :fax
-      #f.input :notes
-      #f.input :priority
-      #f.input :rating, :as => :select, :collection => @ratings
-      #f.input :flagged, :label => 'This contractor is flagged for warning'
-    #end
-    
-    #f.buttons
-
-  #end
-  #
   form :partial => 'form'
-  
+
+  controller do
+    
+    def update
+      @contractor = Contractor.find(params[:id])
+      if params[:contractor][:reset_password] == '1'
+        @contractor.reset_password
+      end
+      no_email_before = @contractor.email.empty?
+      @address = @contractor.address || @contractor.build_address
+      if @contractor.update_attributes(params[:contractor]) && @address.update_attributes(params[:address])
+        unless @contractor.account.nil? then @contractor.account.update_attributes({ :email => @contractor.email }) end
+        notify(Notification::CHANGED, { :message => 'updated', :subject => @contractor })
+        if (no_email_before and !@contractor.email.empty?) || params[:contractor][:grant_web_access] == '1' 
+          @contractor.grant_account_and_send_welcome_email
+          notify(Notification::INFO, { :message => 'granted web access', :subject => @contractor })
+        end
+        redirect_to :action => 'index'
+      else
+        render :action => 'edit', :id => params[:id]
+      end
+    end
+  end
 end
+  
