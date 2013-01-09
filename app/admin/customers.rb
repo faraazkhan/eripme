@@ -2,23 +2,19 @@ ActiveAdmin.register Customer do
   
 menu :if => proc{ can?(:manage, Customer)}
 controller.authorize_resource
-config.filters = false
+filter :email
+config.per_page = 100
+
 
 index do
-  columns do
-       column do
-           table_for Customer.today do
-             column("Contract #") {|customer| customer.contract_number}
-             column("Name") {|customer| customer.name}
-             column("Email") { |customer| customer.email}
-             column("Date") {|customer| customer.created_at}
-             column("Send Email") {|customer| "work in progress" }
-             column("Status") {|customer| customer.status}
-             column("View") {|customer| link_to "View Customer", admin_customer_path(customer)}
-         end
-       end
-    end
-  end
+  column "Contract #", :contract_number
+  column "Name", :name
+  column "Email", :email
+  column "Date", :created_at
+  column("Send Email") { |c| "work in progress"}
+  column "Status", :status
+  column("View") {|customer| link_to "View Customer", admin_customer_path(customer)}
+end
 
 form do |f|
   f.inputs "Details" do

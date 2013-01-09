@@ -3,10 +3,10 @@ ActiveAdmin.register Contractor do
   controller.authorize_resource
 
   index do
-    column("Company") {|con| con.company }
-    column("Email") {|con| con.email }
-    column("Phone") {|con| con.phone }
-    column("Rating") {|con| con.stars}
+    column "Company" , :company
+    column "Email", :email
+    column "Phone", :phone
+    column "Rating", :rating
     default_actions
   end
 
