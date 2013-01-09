@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
              column("Date") {|customer| customer.created_at}
              column("Send Email") {|customer| "work in progress" }
              column("Status") {|customer| customer.status}
-             column("Edit") {|customer| link_to "Edit Customer", admin_customer_path(customer)}
+             column("View") {|customer| link_to "View Customer", admin_customer_path(customer)}
            end
          end
        end
@@ -31,7 +31,7 @@ ActiveAdmin.register_page "Dashboard" do
              column("Date") {|customer| customer.created_at}
              column("Send Email") {|customer| "work in progress" }
              column("Status") {|customer| customer.status}
-             column("Edit") {|customer| link_to "Edit Customer", admin_customer_path(customer)}
+             column("View") {|customer| link_to "View Customer", admin_customer_path(customer)}
            end
          end
        end
